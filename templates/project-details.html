@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} - Project Details{% endblock %}
+
+{% block body_class %}project-details-page{% endblock %}
+
+{% block content %}
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">{{ project.title }}</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li class="current">{{ project.title }}</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper init-swiper">
+
+              <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                    "delay": 5000
+                  },
+                  "slidesPerView": "auto",
+                  "pagination": {
+                    "el": ".swiper-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                  }
+                }
+              </script>
+
+              <div class="swiper-wrapper align-items-center">
+
+                <div class="swiper-slide">
+                  {% if project.media.type == "video" %}
+                    <video
+                      id="project-video"
+                      class="img-fluid w-100"
+                      controls
+                      playsinline
+                      preload="metadata"
+                      poster="{{ url_for('static', filename=project.media.poster) }}"
+                    >
+                      <source src="{{ url_for('static', filename=project.media.src) }}" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  {% elif project.media.type == "gif" %}
+                    <img
+                      src="{{ url_for('static', filename=project.media.src) }}"
+                      alt="{{ project.title }} demo"
+                      class="img-fluid"
+                      loading="lazy"
+                      decoding="async"
+                    >
+                  {% else %}
+                    <img
+                      src="{{ url_for('static', filename=project.image) }}"
+                      alt="{{ project.title }}"
+                      class="img-fluid"
+                      loading="lazy"
+                      decoding="async"
+                    >
+                  {% endif %}
+
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info" data-aos="fade-left" data-aos-delay="200">
+              <h3>Project Information</h3>
+              <ul>
+                <li><strong>Category</strong>: {{ project.category }}</li>
+
+                <li><strong>Project date</strong>: {{ project.info.date }}</li>
+                <li><strong>Project URL</strong>: <a href="{{ project.info.url }}" target="_blank" rel="noopener noreferrer">{{ project.info.url }}</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
+              <h2>Project Overview</h2>
+              {% for paragraph in project.overview %}
+                <p>{{ paragraph }}</p>
+              {% endfor %}
+
+              {% if project.features %}
+              <div class="features mt-4">
+                <h3>Key Features</h3>
+                <div class="row gy-3">
+                  {% for feature in project.features %}
+                  <div class="col-md-6">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="{{ 400 + (loop.index0 * 100) }}">
+                      {% if feature.icon %}
+                      <i class="{{ feature.icon }}"></i>
+                      {% endif %}
+                      <h4>{{ feature.title }}</h4>
+                      <p>{{ feature.description }}</p>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- /Portfolio Details Section -->
+
+{% endblock %}
+
+{% block extra_scripts %}
+  {{ super() }}
+  <script>
+    (function () {
+      const video = document.getElementById('project-video');
+      if (!video) return;
+
+      // Force 1.5x when user starts playing
+      video.addEventListener('play', () => {
+        try { video.playbackRate = 1.5; } catch (e) {}
+      });
+    })();
+  </script>
+{% endblock %}
