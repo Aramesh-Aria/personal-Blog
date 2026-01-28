@@ -6,7 +6,7 @@ from email.message import EmailMessage
 from flask import Flask, abort, flash, render_template, redirect, url_for
 from dotenv import load_dotenv
 
-from forms import ContactForm
+from app.forms import ContactForm
 
 load_dotenv()  # loads variables from .env into os.environ
 
