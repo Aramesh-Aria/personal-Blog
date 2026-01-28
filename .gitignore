@@ -1,0 +1,7 @@
+.venv
+/venv
+.Venv
+.vscode
+steps.txt
+roadmap.txt
+/unused
