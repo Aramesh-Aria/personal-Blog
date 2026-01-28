@@ -86,27 +86,27 @@ projects = [
         "features": [
             {
                 "icon": "bi bi-mortarboard",
-                "title": "🎓 Student Management",
+                "title": "Student Management",
                 "description": "ثبت هنرجو، اطلاعات تکمیلی، سوابق مالی و وضعیت ترم‌ها",
             },
             {
                 "icon": "bi bi-person-badge",
-                "title": "👨‍🏫 Teacher & Class Management",
+                "title": "Teacher & Class Management",
                 "description": "تعریف اساتید، کلاس‌ها، زمان‌بندی و جلوگیری از تداخل جلسات",
             },
             {
                 "icon": "bi bi-calendar-check",
-                "title": "📅 Attendance System",
+                "title": "Attendance System",
                 "description": "ثبت حضور و غیاب به‌تفکیک جلسه و ترم",
             },
             {
                 "icon": "bi bi-cash-coin",
-                "title": "💰 Financial Reports",
+                "title": "Financial Reports",
                 "description": "گزارش‌های لحظه‌ای از شهریه‌ها، پرداخت‌ها و بدهی‌ها",
             },
             {
                 "icon": "bi bi-chat-dots",
-                "title": "📩 Automatic SMS Reminder",
+                "title": "Automatic SMS Reminder",
                 "description": "ارسال پیامک هنگام نزدیک شدن به پایان ترم هنرجو",
             },
         ],
@@ -133,32 +133,32 @@ projects = [
         "features": [
             {
                 "icon": "bi bi-robot",
-                "title": "🤖 Smart Personalized News",
+                "title": "Smart Personalized News",
                 "description": "ربات تلگرام هوشمند برای دریافت اخبار شخصی‌سازی‌شده براساس علایق کاربر.",
             },
             {
                 "icon": "bi bi-list-check",
-                "title": "📰 Topic & Source Control",
+                "title": "Topic & Source Control",
                 "description": "انتخاب و مدیریت موضوعات خبری و منابع معتبر توسط خود کاربر.",
             },
             {
                 "icon": "bi bi-ui-checks-grid",
-                "title": "📲 Interactive Telegram UI",
+                "title": "Interactive Telegram UI",
                 "description": "رابط کاربری تعاملی با دکمه‌های دو مرحله‌ای (Inline Keyboard) برای تجربه بهتر کاربر.",
             },
             {
                 "icon": "bi bi-translate",
-                "title": "🌐 Multi-language Support",
+                "title": "Multi-language Support",
                 "description": "پشتیبانی کامل از زبان فارسی و انگلیسی با ذخیره و حفظ ترجیحات زبانی کاربر.",
             },
             {
                 "icon": "bi bi-database-gear",
-                "title": "🗄️ Robust Data Layer",
+                "title": "Robust Data Layer",
                 "description": "مدیریت داده‌ها با SQLAlchemy ORM و مهاجرت دیتابیس با Alembic برای توسعه‌پذیری و پایداری.",
             },
             {
                 "icon": "bi bi-person-gear",
-                "title": "⚙️ User Preference Management",
+                "title": "User Preference Management",
                 "description": "سیستم ذخیره و به‌روزرسانی ترجیحات کاربران برای ارسال محتوای همیشه مرتبط.",
             },
         ],
