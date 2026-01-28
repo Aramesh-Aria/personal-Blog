@@ -58,7 +58,7 @@ projects = [
         "id": 2,
         "title": "NewsReaderBot – Personalized News Telegram Bot",
         "category": "Telegram Bot | Python | SQLAlchemy | Alembic",
-        "filter_class": "filter-design",
+        "filter_class": "filter-python",
         "image": "img/portfolio/project-2.webp",  # thumbnail in projects grid
         "media": {
             "type": "video",
