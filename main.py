@@ -1,6 +1,11 @@
-from flask import Flask, abort, render_template, request, redirect, url_for
+import os
+
+from flask import Flask, abort, flash, render_template, redirect, url_for
+
+from forms import ContactForm
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-change-me")
 
 # نمونه داده‌های اولیه برای پروژه‌ها
 projects = [
@@ -112,7 +117,8 @@ projects = [
 
 @app.route("/")
 def index():
-    return render_template("index.html", projects=projects)
+    form = ContactForm()
+    return render_template("index.html", projects=projects, form=form)
 
 
 @app.route("/project/<int:id>")
@@ -129,15 +135,24 @@ def service_details():
 
 @app.route("/contact", methods=["POST"])
 def contact():
-    name = request.form.get("name")
-    email = request.form.get("email")
-    subject = request.form.get("subject")
-    message = request.form.get("message")
+    form = ContactForm()
+    if not form.validate_on_submit():
+        # Show validation errors back on the home page
+        return render_template("index.html", projects=projects, form=form), 400
 
-    # فعلاً فقط تست
-    print(name, email, subject, message)
+    # TODO: send email or store message (pure Flask stack requirement is route + validation)
+    print(
+        "CONTACT_FORM_SUBMIT",
+        {
+            "name": form.name.data,
+            "email": form.email.data,
+            "subject": form.subject.data,
+            "message": form.message.data,
+        },
+    )
 
-    return redirect(url_for("index"))
+    flash("Your message has been sent. Thank you!", "success")
+    return redirect(url_for("index", _anchor="contact"))
 
 
 if __name__ == "__main__":

@@ -386,31 +386,52 @@
               <p>پیام شما مستقیماً برای من ارسال می‌شود. در اولین فرصت پاسخ می‌دهم</p>
 
               
-              <form action="{{ url_for('contact') }}" method="post"class="php-email-form">
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  <div class="mb-3">
+                    {% for category, message in messages %}
+                      <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} mb-2" role="alert">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              {% endwith %}
+
+              <form action="{{ url_for('contact') }}" method="post">
+                {{ form.hidden_tag() }}
 
                 <div class="row gy-4">
 
                   <div class="col-md-6">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                    {{ form.name(class_="form-control", placeholder="Your Name") }}
+                    {% for err in form.name.errors %}
+                      <div class="text-danger small mt-1">{{ err }}</div>
+                    {% endfor %}
                   </div>
 
                   <div class="col-md-6 ">
-                    <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                    {{ form.email(class_="form-control", placeholder="Your Email") }}
+                    {% for err in form.email.errors %}
+                      <div class="text-danger small mt-1">{{ err }}</div>
+                    {% endfor %}
                   </div>
 
                   <div class="col-12">
-                    <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                    {{ form.subject(class_="form-control", placeholder="Subject") }}
+                    {% for err in form.subject.errors %}
+                      <div class="text-danger small mt-1">{{ err }}</div>
+                    {% endfor %}
                   </div>
 
                   <div class="col-12">
-                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                    {{ form.message(class_="form-control", rows="6", placeholder="Message") }}
+                    {% for err in form.message.errors %}
+                      <div class="text-danger small mt-1">{{ err }}</div>
+                    {% endfor %}
                   </div>
 
                   <div class="col-12 text-center">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-
                     <button type="submit" class="btn">Send Message</button>
                   </div>
 
