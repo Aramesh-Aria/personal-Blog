@@ -1,11 +1,63 @@
 import os
+import smtplib
+import ssl
+from email.message import EmailMessage
 
 from flask import Flask, abort, flash, render_template, redirect, url_for
+from dotenv import load_dotenv
 
 from forms import ContactForm
 
+load_dotenv()  # loads variables from .env into os.environ
+
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-change-me")
+
+
+def send_contact_email(*, sender_name: str, sender_email: str, subject: str, message: str) -> None:
+    """
+    Send contact form submission via Gmail SMTP to your chosen inbox.
+    """
+    
+    gmail_address = os.environ.get("GMAIL_ADDRESS")
+    gmail_app_password = os.environ.get("GMAIL_APP_PASSWORD")
+    receiver = os.environ.get("CONTACT_RECEIVER_EMAIL")
+    if not gmail_address or not gmail_app_password or not receiver:
+        raise RuntimeError(
+            "Missing email config. Set GMAIL_ADDRESS, GMAIL_APP_PASSWORD, CONTACT_RECEIVER_EMAIL."
+        )
+
+    smtp_host = os.environ.get("SMTP_HOST", "smtp.gmail.com")
+    smtp_port = int(os.environ.get("SMTP_PORT", "587"))
+
+    email_msg = EmailMessage()
+    email_msg["From"] = gmail_address
+    email_msg["To"] = receiver
+    email_msg["Subject"] = f"[Portfolio Contact] {subject}"
+    # Replying will go to the visitor, not your Gmail account.
+    email_msg["Reply-To"] = sender_email
+    email_msg.set_content(
+        "\n".join(
+            [
+                "New message from portfolio contact form:",
+                "",
+                f"Name: {sender_name}",
+                f"Email: {sender_email}",
+                f"Subject: {subject}",
+                "",
+                "Message:",
+                message,
+            ]
+        )
+    )
+
+    context = ssl.create_default_context()
+    with smtplib.SMTP(smtp_host, smtp_port) as server:
+        server.ehlo()
+        server.starttls(context=context)
+        server.ehlo()
+        server.login(gmail_address, gmail_app_password)
+        server.send_message(email_msg)
 
 # نمونه داده‌های اولیه برای پروژه‌ها
 projects = [
@@ -140,16 +192,18 @@ def contact():
         # Show validation errors back on the home page
         return render_template("index.html", projects=projects, form=form), 400
 
-    # TODO: send email or store message (pure Flask stack requirement is route + validation)
-    print(
-        "CONTACT_FORM_SUBMIT",
-        {
-            "name": form.name.data,
-            "email": form.email.data,
-            "subject": form.subject.data,
-            "message": form.message.data,
-        },
-    )
+    try:
+        send_contact_email(
+            sender_name=form.name.data,
+            sender_email=form.email.data,
+            subject=form.subject.data,
+            message=form.message.data,
+        )
+    except Exception as e:
+        # Keep details out of the UI, but log them for you.
+        print("CONTACT_EMAIL_SEND_FAILED", repr(e))
+        flash("Sorry—your message could not be sent right now. Please try again later.", "error")
+        return redirect(url_for("index", _anchor="contact"))
 
     flash("Your message has been sent. Thank you!", "success")
     return redirect(url_for("index", _anchor="contact"))
