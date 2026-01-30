@@ -1,6 +1,7 @@
 import os
 import smtplib
 import ssl
+from datetime import datetime
 from email.message import EmailMessage
 
 from flask import Flask, abort, flash, render_template, redirect, url_for
@@ -12,6 +13,11 @@ load_dotenv()  # loads variables from .env into os.environ
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-change-me")
+
+
+@app.context_processor
+def inject_current_year():
+    return {"current_year": datetime.now().year}
 
 
 def send_contact_email(*, sender_name: str, sender_email: str, subject: str, message: str) -> None:

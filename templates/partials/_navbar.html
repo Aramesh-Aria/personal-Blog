@@ -1,0 +1,23 @@
+<header id="header" class="header dark-background d-flex flex-column justify-content-center">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+  
+    <div class="header-container d-flex flex-column align-items-start">
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{{ url_for('index', _anchor='hero') }}" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
+          <li><a href="{{ url_for('index', _anchor='about') }}"><i class="bi bi-person navicon"></i> About</a></li>
+          <li><a href="{{ url_for('index', _anchor='resume') }}"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+          <li><a href="{{ url_for('index', _anchor='projects') }}"><i class="bi bi-images navicon"></i> Projects</a></li>
+          <li><a href="{{ url_for('index', _anchor='contact') }}"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+        </ul>
+      </nav>
+  
+      <div class="social-links text-center">
+        <a href="https://www.instagram.com/aria__am/" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://t.me/aria_a_m" class="telegram"><i class="bi bi-telegram"></i></a>
+        <a href="https://github.com/Aramesh-Aria"><i class="bi bi-github"></i></a>
+        <a href="https://www.linkedin.com/login"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </header>
+  
