@@ -8,3 +8,6 @@ roadmap.txt
 .env
 /__pycache__
 __pycache__
+static/.DS_Store
+.DS_Store
+static/img/.DS_Store
