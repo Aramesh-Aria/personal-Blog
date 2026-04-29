@@ -1384,6 +1384,53 @@ section,
   transition: width 1s ease;
 }
 
+.resume .resume-side .technical-skills h3 {
+  margin-bottom: 1.25rem;
+}
+
+.resume .resume-side .technical-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.resume .resume-side .technical-skill {
+  display: flex;
+  min-height: 112px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 82%);
+  border-radius: 8px;
+  background-color: color-mix(in srgb, var(--surface-color), var(--accent-color) 4%);
+  text-align: center;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.resume .resume-side .technical-skill:hover {
+  border-color: color-mix(in srgb, var(--accent-color), transparent 45%);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.resume .resume-side .technical-skill i {
+  font-size: 2.65rem;
+  line-height: 1;
+}
+
+.resume .resume-side .technical-skill .devicon-flask-original {
+  color: var(--heading-color);
+}
+
+.resume .resume-side .technical-skill span {
+  color: var(--heading-color);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
 .resume .resume-section {
   margin-bottom: 3rem;
 }

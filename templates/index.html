@@ -2,6 +2,10 @@
 
 {% block title %}Aria Aramesh{% endblock %}
 
+{% block extra_head %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+{% endblock %}
+
 {% block content %}
     {% include "partials/_hero.html" %}
 
@@ -55,16 +59,11 @@
 
               <div class="description">
                 <p>
-                من فارغ‌التحصیل علوم کامپیوتر هستم و تمرکزم روی توسعه بک‌اند با پایتون و جانگو است.
-                به کار با داده‌ها، دیتابیس‌ها و طراحی ساختارهای تمیز و توسعه‌ی اپلیکیشن‌های کاربردی علاقه دارم.
-
+                من فارغ‌التحصیل علوم کامپیوتر هستم و مسیر حرفه‌ای خود را روی توسعه‌ی نرم‌افزارهای بک اند و کار با پایگاه داده متمرکز کرده‌ام
                 </p>
 
                 <p>
-
-در حال حاضر روی تقویت مهارت‌های فنی، کار روی پروژه‌های واقعی
-و آماده‌شدن برای فرصت‌های شغلی حرفه‌ای  تمرکز دارم.
-یادگیری مستمر بخش جدانشدنی مسیر من است.
+                هدف من ورود به تیمی است که بتوانم در آن روی محصول واقعی کار کنم، کیفیت کد را جدی بگیرم و تجربه‌ی عملی بیشتری به دست بیاورم
                 </p>
 
               </div>
@@ -75,11 +74,11 @@
                 <div class="detail-row">
                   <div class="detail-item">
                     <span class="detail-label">Specialization</span>
-                    <span class="detail-value">SQL &amp; Python &amp; Django</span>
+                    <span class="detail-value">Python / Django / SQL</span>
                   </div>
                   <div class="detail-item">
                     <span class="detail-label">Experience Level</span>
-                    <span class="detail-value">junior Backend Developer</span>
+                    <span class="detail-value">Junior Backend Developer</span>
                   </div>
                 </div>
                 <div class="detail-row">
@@ -89,16 +88,16 @@
                   </div>
                   <div class="detail-item">
                     <span class="detail-label">زبان</span>
-                    <span class="detail-value">Persian (Native), English, German</span>
+                    <span class="detail-value">Persian (Native), English</span>
                   </div>
                 </div>
               </div>
 
               <div class="cta-section">
-                <a href="#" class="btn btn-primary">
+                <!-- <a href="#" class="btn btn-primary">
                   <i class="bi bi-download"></i>
                   دانلود رزومه
-                </a>
+                </a> -->
                 <a href="{{ url_for('index') }}#contact" class="btn btn-outline">
                   <i class="bi bi-chat-dots"></i>
                   تماس با من
@@ -117,11 +116,7 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>رزومه</h2>
-        <p>
-        من هنوز تجربه کاری رسمی ندارم، اما با انجام پروژه‌های واقعی، توانایی حل مسائل و ساخت نرم‌افزارهای کاربردی را کسب کرده‌ام.
-        در جستجوی فرصت اولین تجربه کاری خود هستم و مشتاق یادگیری و رشد حرفه‌ای هستم
-        </p>
+        <!-- <h2>رزومه</h2> -->
 
       </div><!-- End Section Title -->
 
@@ -136,62 +131,32 @@
 
               </div>
 
-              <h3>Professional Summary</h3>
-              <p>
-              توسعه‌دهنده‌ی نرم‌افزار با تمرکز بر بک‌اند، مسلط به  و پایتون و جانگو.
-              علاقه‌مند به داده، معماری تمیز و ساخت سیستم‌های قابل اطمینان.
-              در مسیر رشد حرفه‌ای از طریق پروژه‌های واقعی و یادگیری مداوم.
-              </p>
-
-
-              <div class="skills-animation mt-4">
+              <div class="technical-skills">
                 <h3>Technical Skills</h3>
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
+                <div class="technical-skills-grid" aria-label="Technical Skills">
+                  <div class="technical-skill">
+                    <i class="devicon-python-plain colored" aria-hidden="true"></i>
                     <span>Python</span>
-                    <span>50%</span>
                   </div>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
 
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
+                  <div class="technical-skill">
+                    <i class="devicon-django-plain colored" aria-hidden="true"></i>
                     <span>Django</span>
-                    <span>0%</span>
                   </div>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
 
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
+                  <div class="technical-skill">
+                    <i class="devicon-mysql-plain colored" aria-hidden="true"></i>
                     <span>SQL</span>
-                    <span>45%</span>
                   </div>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
 
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
+                  <div class="technical-skill">
+                    <i class="devicon-flask-original" aria-hidden="true"></i>
                     <span>Flask</span>
-                    <span>60%</span>
                   </div>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between">
+
+                  <div class="technical-skill">
+                    <i class="devicon-git-plain colored" aria-hidden="true"></i>
                     <span>Git</span>
-                    <span>70%</span>
-                  </div>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>
@@ -233,8 +198,7 @@
       <div class="container section-title" data-aos="fade-up">
         <h2>Projects</h2>
         <p>
-        پروژه‌های زیر نمونه‌ای از کارهایی هستند که من انجام داده‌ام.
-        شما می‌توانید سایر پروژه‌ها و کدهای من را در گیت‌هاب مشاهده کنید.
+        چند نمونه از پروژه‌هایی که برای حل مسئله‌های مشخص و تمرین ساختاردهی نرم‌افزار توسعه داده‌ام
         </p>
 
       </div><!-- End Section Title -->
