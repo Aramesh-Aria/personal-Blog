@@ -20,7 +20,7 @@
               <div class="profile-header">
                 <div class="profile-image">
 
-                 <img src="{{ url_for('static', filename='img/profile/profile-square-3.webp') }}" alt="Profile Image" class="img-fluid">
+                 <img src="{{ url_for('static', filename='img/profile/profile-square-2.webp') }}" alt="Profile Image" class="img-fluid">
 
                 </div>
                 <div class="profile-badge">
@@ -29,8 +29,8 @@
               </div>
 
               <div class="profile-content">
-                <h3>Aria Aramesh</h3>
-                <p class="profession"> Director &amp; Developer</p>
+                <!-- <h3>Aria Aramesh</h3>
+                <p class="profession"> Director &amp; Developer</p> -->
 
                 <div class="contact-links">
                   <a href="mailto:aramesh_aria@yahoo.com"class="contact-item">
@@ -58,11 +58,11 @@
               </div>
 
               <div class="description">
-                <p>
+                <p align="right">
                 من فارغ‌التحصیل علوم کامپیوتر هستم و مسیر حرفه‌ای خود را روی توسعه‌ی نرم‌افزارهای بک اند و کار با پایگاه داده متمرکز کرده‌ام
                 </p>
 
-                <p>
+                <p align="right">
                 هدف من ورود به تیمی است که بتوانم در آن روی محصول واقعی کار کنم، کیفیت کد را جدی بگیرم و تجربه‌ی عملی بیشتری به دست بیاورم
                 </p>
 
@@ -126,10 +126,10 @@
           <!-- Left column with summary and contact -->
           <div class="col-lg-4">
             <div class="resume-side" data-aos="fade-right" data-aos-delay="100">
-              <div class="profile-img mb-4">
+              <!-- <div class="profile-img mb-4">
                 <img src="{{ url_for('static', filename='img/profile/profile-square-2.webp') }}" alt="Profile" class="img-fluid rounded">
 
-              </div>
+              </div> -->
 
               <div class="technical-skills">
                 <h3>Technical Skills</h3>
@@ -304,8 +304,8 @@
 
           <div class="col-lg-7">
             <div class="contact-form">
-              <h3>!پیام بفرستید</h3>
-              <p>پیام شما مستقیماً برای من ارسال می‌شود. در اولین فرصت پاسخ می‌دهم</p>
+              <h3 align="right">!پیام بفرستید</h3>
+              <p align="right">پیام شما مستقیماً برای من ارسال می‌شود. در اولین فرصت پاسخ می‌دهم</p>
 
               
               {% with messages = get_flashed_messages(with_categories=true) %}
