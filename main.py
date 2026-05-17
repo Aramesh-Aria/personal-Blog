@@ -13,6 +13,14 @@ load_dotenv()  # loads variables from .env into os.environ
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-change-me")
+app.config["SEND_FILE_MAX_AGE_DEFAULT"] = int(os.environ.get("STATIC_CACHE_MAX_AGE", "31536000"))
+
+try:
+    from flask_compress import Compress
+    Compress(app)
+except Exception:
+    # Keep app booting even if compression package is not installed yet.
+    pass
 
 
 @app.context_processor
