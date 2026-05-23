@@ -29,8 +29,12 @@ SECRET_KEY = 'django-insecure-k+yj0_tfw5viwe-jhv=x_d+$xk%^wx=v*xiph+dgva(hkppz(k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['api.runflare.com', 'localhost', '127.0.0.1','portfolio.runflare.run','aria-aramesh.ir']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://aria-aramesh.ir',
+    'https://aria-aramesh.runflare.run',
+]
 
 # Application definition
 
@@ -83,7 +87,7 @@ WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'database/db.sqlite3',
     }
 }
 
@@ -112,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
 
@@ -122,9 +126,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'public/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "public","static")
+MEDIA_URL = '/public/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "public","media")
+
+
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / 'public/static',
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
