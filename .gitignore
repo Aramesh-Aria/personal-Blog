@@ -1,7 +1,6 @@
 .venv
 /venv
 .Venv
-media/
 .vscode
 steps.txt
 roadmap.txt
