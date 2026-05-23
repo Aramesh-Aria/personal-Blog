@@ -176,24 +176,25 @@
               <div class="row gy-4 portfolio-container isotope-container" data-aos="fade-up" data-aos-delay="200">
                 {% for project in projects %}
                 <div class="col-lg-6 col-md-6 portfolio-item isotope-item {{ project.filter_class }}">
-                  <div class="portfolio-wrap">
-                    <img src="{% static project.image %}" class="img-fluid" alt="{{ project.title }}" loading="lazy">
-                    <div class="portfolio-info">
-                      <div class="content">
-                        <span class="category">{{ project.category }}</span>
-                        <h4>{{ project.title }}</h4>
-                        <div class="portfolio-links">
-                          <a href="{% static project.image %}" class="glightbox" title="{{ project.title }}">
-                            <i class="bi bi-plus-lg"></i>
-                          </a>
-                          <a href="{% url 'project_detail' project.id %}">
-                            <i class="bi bi-arrow-right"></i>
-                          </a>
-                        </div>
+                <div class="portfolio-wrap">
+                  <img src="{{ MEDIA_URL }}{{ project.image }}" class="img-fluid" alt="{{ project.title }}" loading="lazy">
+                  <div class="portfolio-info">
+                    <div class="content">
+                      <span class="category">{{ project.category }}</span>
+                      <h4>{{ project.title }}</h4>
+                      <div class="portfolio-links">
+                        <a href="{{ MEDIA_URL }}{{ project.image }}" class="glightbox" title="{{ project.title }}">
+                          <i class="bi bi-plus-lg"></i>
+                        </a>
+                        <a href="{% url 'project_detail' project.id %}">
+                          <i class="bi bi-arrow-right"></i>
+                        </a>
                       </div>
                     </div>
                   </div>
+                </div>
                 </div><!-- End Portfolio Item -->
+
                 {% endfor %}
               </div><!-- End Portfolio Container -->
             </div>
