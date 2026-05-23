@@ -107,6 +107,48 @@ class Command(BaseCommand):
                     },
                 ],
             },
+            {
+                "id": 3,
+                "title": "Aramesh Music Academy Website",
+                "category": "Web Development | Django | Persian Localization",
+                "filter_class": "filter-design",
+                "image": "img/portfolio/project-3.webp",
+                "media": {
+                    "type": "image",
+                    "src": "img/portfolio/project-3.webp",
+                },
+                "info": {
+                    "date": "2026",
+                    "url": "https://aramesh-academy.ir",
+                },
+                "overview": [
+                    "سایت رسمی آکادمی موسیقی آرامش با هدف مدیریت هنرجویان، نمایش دوره‌های آموزشی و برگزاری کلاس‌ها طراحی شده است.",
+                    "این پروژه از فریمورک جنگو و تقویم جلالی برای بومی‌سازی تاریخ‌ها استفاده می‌کند.",
+                    "بخش تماس با ما برای ثبت‌نام و دریافت مشاوره‌های اولیه طراحی شده است.",
+                ],
+                "features": [
+                    {
+                        "icon": "bi bi-person-video3",
+                        "title": "Teacher Directory",
+                        "description": "پروفایل اختصاصی برای اساتید به همراه سوابق هنری و آموزشی.",
+                    },
+                    {
+                        "icon": "bi bi-images",
+                        "title": "Academy Gallery",
+                        "description": "نمایش تصاویر و فعالیت‌های هنری آکادمی.",
+                    },
+                    {
+                        "icon": "bi bi-calendar-event",
+                        "title": "Class Schedules",
+                        "description": "سیستم نمایش و مدیریت جلسات آموزشی با پشتیبانی از تقویم شمسی.",
+                    },
+                    {
+                        "icon": "bi bi-envelope-check",
+                        "title": "Inquiry Management",
+                        "description": "فرم تماس یکپارچه برای دریافت درخواست‌های هنرجویان جدید.",
+                    },
+                ],
+            },
         ]
 
         for p_data in projects_data:

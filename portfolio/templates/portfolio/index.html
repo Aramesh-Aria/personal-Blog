@@ -280,6 +280,14 @@
                       <div class="text-danger small mt-1">{{ error }}</div>
                     {% endfor %}
                   </div>
+
+                  <div class="col-12 captcha-container">
+                    {{ form.captcha }}
+                    {% for error in form.captcha.errors %}
+                      <div class="text-danger small mt-1">{{ error }}</div>
+                    {% endfor %}
+                  </div>
+
                   <div class="col-12 text-center">
                     <button type="submit" class="btn">Send Message</button>
                   </div>
