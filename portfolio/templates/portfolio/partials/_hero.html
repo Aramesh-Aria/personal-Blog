@@ -1,3 +1,4 @@
+{% load static %}
 <section id="hero" class="hero section">
 
     <div class="background-elements">
@@ -27,7 +28,7 @@
             <div class="hero-visual">
               <div class="profile-container">
                 <div class="profile-background"></div>
-                <img src="{{ url_for('static', filename='img/profile/profile-square-3.webp') }}" alt="Aria Aramesh" class="profile-image">
+                <img src="{% static 'img/profile/profile-square-3.webp' %}" alt="Aria Aramesh" class="profile-image">
               </div>
             </div>
           </div>
@@ -37,4 +38,3 @@
     </div>
   
   </section><!-- /Hero Section -->
-  

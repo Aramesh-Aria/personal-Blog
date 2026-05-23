@@ -1,4 +1,5 @@
-{% extends "base.html" %}
+{% extends "portfolio/base.html" %}
+{% load static %}
 
 {% block title %}{{ project.title }} - Project Details{% endblock %}
 
@@ -11,8 +12,7 @@
         <h1 class="mb-2 mb-lg-0">{{ project.title }}</h1>
         <nav class="breadcrumbs">
           <ol>
-            
-            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
             <li class="current">{{ project.title }}</li>
           </ol>
         </nav>
@@ -21,14 +21,10 @@
 
     <!-- Portfolio Details Section -->
     <section id="portfolio-details" class="portfolio-details section">
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row gy-4">
-
           <div class="col-lg-8">
             <div class="portfolio-details-slider swiper init-swiper">
-
               <script type="application/json" class="swiper-config">
                 {
                   "loop": true,
@@ -46,23 +42,22 @@
               </script>
 
               <div class="swiper-wrapper align-items-center">
-
                 <div class="swiper-slide">
-                  {% if project.media.type == "video" %}
+                  {% if project.media_type == "video" %}
                     <video
                       id="project-video"
                       class="img-fluid w-100"
                       controls
                       playsinline
                       preload="metadata"
-                      poster="{{ url_for('static', filename=project.media.poster) }}"
+                      poster="{% if project.media_poster %}{% static project.media_poster %}{% endif %}"
                     >
-                      <source src="{{ url_for('static', filename=project.media.src) }}" type="video/mp4">
+                      <source src="{% static project.media_src %}" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
-                  {% elif project.media.type == "gif" %}
+                  {% elif project.media_type == "gif" %}
                     <img
-                      src="{{ url_for('static', filename=project.media.src) }}"
+                      src="{% static project.media_src %}"
                       alt="{{ project.title }} demo"
                       class="img-fluid"
                       loading="lazy"
@@ -70,16 +65,14 @@
                     >
                   {% else %}
                     <img
-                      src="{{ url_for('static', filename=project.image) }}"
+                      src="{% static project.image %}"
                       alt="{{ project.title }}"
                       class="img-fluid"
                       loading="lazy"
                       decoding="async"
                     >
                   {% endif %}
-
                 </div>
-
               </div>
               <div class="swiper-pagination"></div>
             </div>
@@ -90,9 +83,10 @@
               <h3>Project Information</h3>
               <ul>
                 <li><strong>Category</strong>: {{ project.category }}</li>
-
-                <li><strong>Project date</strong>: {{ project.info.date }}</li>
-                <li><strong>Project URL</strong>: <a href="{{ project.info.url }}" target="_blank" rel="noopener noreferrer">{{ project.info.url }}</a></li>
+                <li><strong>Project date</strong>: {{ project.date }}</li>
+                {% if project.url %}
+                <li><strong>Project URL</strong>: <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">{{ project.url }}</a></li>
+                {% endif %}
               </ul>
             </div>
           </div>
@@ -100,17 +94,17 @@
           <div class="col-lg-12">
             <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
               <h2>Project Overview</h2>
-              {% for paragraph in project.overview %}
-                <p>{{ paragraph }}</p>
+              {% for point in project.overview_points.all %}
+                <p>{{ point.text }}</p>
               {% endfor %}
 
-              {% if project.features %}
+              {% if project.features.all %}
               <div class="features mt-4">
                 <h3>Key Features</h3>
                 <div class="row gy-3">
-                  {% for feature in project.features %}
+                  {% for feature in project.features.all %}
                   <div class="col-md-6">
-                    <div class="feature-item" data-aos="fade-up" data-aos-delay="{{ 400 + (loop.index0 * 100) }}">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:4 }}00">
                       {% if feature.icon %}
                       <i class="{{ feature.icon }}"></i>
                       {% endif %}
@@ -124,18 +118,13 @@
               {% endif %}
             </div>
           </div>
-
         </div>
-
       </div>
-
     </section>
-    <!-- /Portfolio Details Section -->
-
 {% endblock %}
 
 {% block extra_scripts %}
-  {{ super() }}
+  {{ block.super }}
   <script>
     (function () {
       const video = document.getElementById('project-video');

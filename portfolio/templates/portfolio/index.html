@@ -1,4 +1,5 @@
-{% extends "base.html" %}
+{% extends "portfolio/base.html" %}
+{% load static %}
 
 {% block title %}Aria Aramesh{% endblock %}
 
@@ -8,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    {% include "partials/_hero.html" %}
+    {% include "portfolio/partials/_hero.html" %}
 
     <!-- About Section -->
     <section id="about" class="about section">
@@ -20,9 +21,7 @@
             <div class="profile-card">
               <div class="profile-header">
                 <div class="profile-image">
-
-                 <img src="{{ url_for('static', filename='img/profile/profile-square-2.webp') }}" alt="Profile Image" class="img-fluid" loading="lazy" decoding="async">
-
+                 <img src="{% static 'img/profile/profile-square-2.webp' %}" alt="Profile Image" class="img-fluid" loading="lazy" decoding="async">
                 </div>
                 <div class="profile-badge">
                   <i class="bi bi-check-circle-fill"></i>
@@ -30,9 +29,6 @@
               </div>
 
               <div class="profile-content">
-                <!-- <h3>Aria Aramesh</h3>
-                <p class="profession"> Director &amp; Developer</p> -->
-
                 <div class="contact-links">
                   <a href="mailto:aramesh_aria@yahoo.com"class="contact-item">
                     <i class="bi bi-envelope"></i>
@@ -62,14 +58,10 @@
                 <p align="right">
                 من فارغ‌التحصیل علوم کامپیوتر هستم و مسیر حرفه‌ای خود را روی توسعه‌ی نرم‌افزارهای بک اند و کار با پایگاه داده متمرکز کرده‌ام
                 </p>
-
                 <p align="right">
                 هدف من ورود به تیمی است که بتوانم در آن روی محصول واقعی کار کنم، کیفیت کد را جدی بگیرم و تجربه‌ی عملی بیشتری به دست بیاورم
                 </p>
-
               </div>
-
-              
 
               <div class="details-grid">
                 <div class="detail-row">
@@ -95,11 +87,7 @@
               </div>
 
               <div class="cta-section">
-                <!-- <a href="#" class="btn btn-primary">
-                  <i class="bi bi-download"></i>
-                  دانلود رزومه
-                </a> -->
-                <a href="{{ url_for('index') }}#contact" class="btn btn-outline">
+                <a href="{% url 'index' %}#contact" class="btn btn-outline">
                   <i class="bi bi-chat-dots"></i>
                   تماس با من
                 </a>
@@ -107,31 +95,18 @@
             </div>
           </div>
         </div>
-
       </div>
-
     </section><!-- /About Section -->
 
     <!-- Resume Section -->
     <section id="resume" class="resume section">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <!-- <h2>رزومه</h2> -->
-
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row gy-4">
-          <!-- Left column with summary and contact -->
           <div class="col-lg-4">
             <div class="resume-side" data-aos="fade-right" data-aos-delay="100">
-              <!-- <div class="profile-img mb-4">
-                <img src="{{ url_for('static', filename='img/profile/profile-square-2.webp') }}" alt="Profile" class="img-fluid rounded">
-
-              </div> -->
-
               <div class="technical-skills">
                 <h3>Technical Skills</h3>
                 <div class="technical-skills-grid" aria-label="Technical Skills">
@@ -139,22 +114,18 @@
                     <i class="devicon-python-plain colored" aria-hidden="true"></i>
                     <span>Python</span>
                   </div>
-
                   <div class="technical-skill">
                     <i class="devicon-django-plain colored" aria-hidden="true"></i>
                     <span>Django</span>
                   </div>
-
                   <div class="technical-skill">
                     <i class="devicon-mysql-plain colored" aria-hidden="true"></i>
                     <span>SQL</span>
                   </div>
-
                   <div class="technical-skill">
                     <i class="devicon-flask-original" aria-hidden="true"></i>
                     <span>Flask</span>
                   </div>
-
                   <div class="technical-skill">
                     <i class="devicon-git-plain colored" aria-hidden="true"></i>
                     <span>Git</span>
@@ -164,50 +135,34 @@
             </div>
           </div>
 
-          <!-- Right column with experience and education -->
           <div class="col-lg-8 ps-4 ps-lg-5">
-
-            <!-- Education Section -->
             <div class="resume-section" data-aos="fade-up" data-aos-delay="100">
               <h3><i class="bi bi-mortarboard me-2"></i>تحصیلات</h3>
-
               <div class="resume-item">
                 <h4>لیسانس علوم کامپیوتر</h4>
                 <h5>1398-1403</h5>
                 <p class="company"><i class="bi bi-building"></i>دانشگاه مازندران - بابلسر</p>
               </div>
-
               <div class="resume-item">
                 <h4>فوق لیسانس مهندسی و علم شبکه های کامپیوتری</h4>
                 <h5>1403-Present</h5>
                 <p class="company"><i class="bi bi-building"></i>دانشگاه علوم و تحقیقات - تهران</p>
               </div>
             </div>
-
-
           </div>
         </div>
-
       </div>
-
     </section><!-- /Resume Section -->
 
-    <!-- Portfolio Section -->
+    <!-- Projects Section -->
     <section id="projects" class="portfolio section">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Projects</h2>
-        <p>
-        چند نمونه از پروژه‌هایی که برای حل مسئله‌های مشخص و تمرین ساختاردهی نرم‌افزار توسعه داده‌ام
-        </p>
-
-      </div><!-- End Section Title -->
+        <p>چند نمونه از پروژه‌هایی که برای حل مسئله‌های مشخص و تمرین ساختاردهی نرم‌افزار توسعه داده‌ام</p>
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
           <div class="row">
             <div class="col-lg-3 filter-sidebar">
               <div class="filters-wrapper" data-aos="fade-right" data-aos-delay="150">
@@ -220,65 +175,46 @@
             </div>
             <div class="col-lg-9">
               <div class="row gy-4 portfolio-container isotope-container" data-aos="fade-up" data-aos-delay="200">
-
                 {% for project in projects %}
                 <div class="col-lg-6 col-md-6 portfolio-item isotope-item {{ project.filter_class }}">
                   <div class="portfolio-wrap">
-                    <img src="{{ url_for('static', filename=project.image) }}" class="img-fluid" alt="{{ project.title }}" loading="lazy">
-
+                    <img src="{% static project.image %}" class="img-fluid" alt="{{ project.title }}" loading="lazy">
                     <div class="portfolio-info">
                       <div class="content">
                         <span class="category">{{ project.category }}</span>
                         <h4>{{ project.title }}</h4>
                         <div class="portfolio-links">
-
-                          <a href="{{ url_for('static', filename=project.image) }}" class="glightbox" title="{{ project.title }}">
+                          <a href="{% static project.image %}" class="glightbox" title="{{ project.title }}">
                             <i class="bi bi-plus-lg"></i>
                           </a>
-
-                          <a href="{{ url_for('project_detail', id=project.id) }}">
+                          <a href="{% url 'project_detail' project.id %}">
                             <i class="bi bi-arrow-right"></i>
                           </a>
-
                         </div>
                       </div>
                     </div>
                   </div>
                 </div><!-- End Portfolio Item -->
                 {% endfor %}
-
               </div><!-- End Portfolio Container -->
             </div>
-                        </div>
-                      </div>
-
-                    </div>
-
+          </div>
+        </div>
       </div>
-
     </section><!-- /Portfolio Section -->
     
     <!-- Contact Section -->
     <section id="contact" class="contact section">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>تماس با من</h2>
-        <p>
-        اگر علاقه‌مند به همکاری، پروژه یا صرفاً یک گفت‌وگوی فنی هستید،
-        می‌توانید از طریق اطلاعات زیر یا فرم تماس پیام ارسال کنید
-        </p>
-
+        <p>اگر علاقه‌مند به همکاری، پروژه یا صرفاً یک گفت‌وگوی فنی هستید، می‌توانید از طریق اطلاعات زیر یا فرم تماس پیام ارسال کنید</p>
       </div>
-      <!-- End Section Title -->
 
       <div class="container">
-
         <div class="row g-4 g-lg-5">
           <div class="col-lg-5">
             <div class="info-box">
               <h3>Contact Info</h3>
-
               <div class="info-item">
                 <div class="icon-box">
                   <i class="bi bi-telephone"></i>
@@ -289,7 +225,6 @@
                   <p>+98 910 234 2195</p>
                 </div>
               </div>
-
               <div class="info-item">
                 <div class="icon-box">
                   <i class="bi bi-envelope"></i>
@@ -308,67 +243,51 @@
               <h3 align="right">!پیام بفرستید</h3>
               <p align="right">پیام شما مستقیماً برای من ارسال می‌شود. در اولین فرصت پاسخ می‌دهم</p>
 
-              
-              {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                  <div class="mb-3">
-                    {% for category, message in messages %}
-                      <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} mb-2" role="alert">
-                        {{ message }}
-                      </div>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-              {% endwith %}
+              {% if messages %}
+                <div class="mb-3">
+                  {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} mb-2" role="alert">
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
 
-              <form action="{{ url_for('contact') }}" method="post">
-                {{ form.hidden_tag() }}
-
+              <form action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
                 <div class="row gy-4">
-
                   <div class="col-md-6">
-                    {{ form.name(class_="form-control", placeholder="Your Name") }}
-                    {% for err in form.name.errors %}
-                      <div class="text-danger small mt-1">{{ err }}</div>
+                    {{ form.name }}
+                    {% for error in form.name.errors %}
+                      <div class="text-danger small mt-1">{{ error }}</div>
                     {% endfor %}
                   </div>
-
                   <div class="col-md-6 ">
-                    {{ form.email(class_="form-control", placeholder="Your Email") }}
-                    {% for err in form.email.errors %}
-                      <div class="text-danger small mt-1">{{ err }}</div>
+                    {{ form.email }}
+                    {% for error in form.email.errors %}
+                      <div class="text-danger small mt-1">{{ error }}</div>
                     {% endfor %}
                   </div>
-
                   <div class="col-12">
-                    {{ form.subject(class_="form-control", placeholder="Subject") }}
-                    {% for err in form.subject.errors %}
-                      <div class="text-danger small mt-1">{{ err }}</div>
+                    {{ form.subject }}
+                    {% for error in form.subject.errors %}
+                      <div class="text-danger small mt-1">{{ error }}</div>
                     {% endfor %}
                   </div>
-
                   <div class="col-12">
-                    {{ form.message(class_="form-control", rows="6", placeholder="Message") }}
-                    {% for err in form.message.errors %}
-                      <div class="text-danger small mt-1">{{ err }}</div>
+                    {{ form.message }}
+                    {% for error in form.message.errors %}
+                      <div class="text-danger small mt-1">{{ error }}</div>
                     {% endfor %}
                   </div>
-
                   <div class="col-12 text-center">
                     <button type="submit" class="btn">Send Message</button>
                   </div>
-
                 </div>
               </form>
-
             </div>
           </div>
-
         </div>
-
       </div>
-
     </section><!-- /Contact Section -->
-
-
 {% endblock %}
