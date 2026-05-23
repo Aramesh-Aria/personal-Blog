@@ -50,9 +50,16 @@
    */
   const preloader = document.querySelector('#preloader');
   if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
+    // Hide preloader as soon as DOM is ready, or at most after 2 seconds
+    const hidePreloader = () => {
+      preloader.classList.add('loaded');
+      setTimeout(() => preloader.remove(), 600);
+    };
+
+    window.addEventListener('load', hidePreloader);
+    
+    // Fallback: hide preloader after 3 seconds even if not all assets are loaded
+    setTimeout(hidePreloader, 3000);
   }
 
   /**
