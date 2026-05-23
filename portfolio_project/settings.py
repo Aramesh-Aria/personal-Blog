@@ -126,14 +126,4 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-# Email Configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.environ.get('SMTP_HOST', 'smtp.gmail.com')
-EMAIL_PORT = int(os.environ.get('SMTP_PORT', '587'))
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('GMAIL_ADDRESS')
-EMAIL_HOST_PASSWORD = os.environ.get('GMAIL_APP_PASSWORD')
-DEFAULT_FROM_EMAIL = os.environ.get('GMAIL_ADDRESS')
-CONTACT_RECEIVER_EMAIL = os.environ.get('CONTACT_RECEIVER_EMAIL')
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

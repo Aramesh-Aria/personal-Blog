@@ -35,3 +35,13 @@ class ProjectFeature(models.Model):
 
     def __str__(self):
         return f"Feature: {self.title} for {self.project.title}"
+
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=80)
+    email = models.EmailField(max_length=120)
+    subject = models.CharField(max_length=120)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Message from {self.name} - {self.subject}"
