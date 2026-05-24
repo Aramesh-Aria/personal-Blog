@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-k+yj0_tfw5viwe-jhv=x_d+$xk%^wx=v*xiph+dgva(hkppz(k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['api.runflare.com', 'localhost', '127.0.0.1','portfolio.runflare.run','aria-aramesh.ir']
 
