@@ -11,11 +11,11 @@ class Command(BaseCommand):
                 "title": "AcaSmart – Desktop Music Academy Management Software",
                 "category": "Desktop Application | Python | PySide6 | SQLite",
                 "filter_class": "filter-python",
-                "image": "img/portfolio/project-1.webp",
+                "image": "portfolio/project-1.webp",
                 "media": {
                     "type": "video",
-                    "src": "img/portfolio/project-1-demo.mp4",
-                    "poster": "img/portfolio/project-1.webp",
+                    "src": "portfolio/project-1-demo.mp4",
+                    "poster": "portfolio/project-1.webp",
                 },
                 "info": {
                     "date": "28/1/2026",
@@ -59,11 +59,11 @@ class Command(BaseCommand):
                 "title": "NewsReaderBot – Personalized News Telegram Bot",
                 "category": "Telegram Bot | Python | SQLAlchemy | Alembic",
                 "filter_class": "filter-python",
-                "image": "img/portfolio/project-2.webp",
+                "image": "portfolio/project-2.webp",
                 "media": {
                     "type": "video",
-                    "src": "img/portfolio/project-2-demo.mp4",
-                    "poster": "img/portfolio/project-2.webp",
+                    "src": "portfolio/project-2-demo.mp4",
+                    "poster": "portfolio/project-2.webp",
                 },
                 "info": {
                     "date": "28/1/2026",
@@ -112,10 +112,10 @@ class Command(BaseCommand):
                 "title": "Aramesh Music Academy Website",
                 "category": "Web Development | Django | Persian Localization",
                 "filter_class": "filter-design",
-                "image": "img/portfolio/project-3.webp",
+                "image": "portfolio/project-3.webp",
                 "media": {
                     "type": "image",
-                    "src": "img/portfolio/project-3.webp",
+                    "src": "portfolio/project-3.webp",
                 },
                 "info": {
                     "date": "2026",

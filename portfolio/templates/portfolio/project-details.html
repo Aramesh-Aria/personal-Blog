@@ -50,14 +50,14 @@
                       controls
                       playsinline
                       preload="metadata"
-                      poster="{% if project.media_poster %}{% static project.media_poster %}{% endif %}"
+                      poster="{% if project.media_poster %}{{ MEDIA_URL }}{{ project.media_poster }}{% endif %}"
                     >
-                      <source src="{% static project.media_src %}" type="video/mp4">
+                      <source src="{{ MEDIA_URL }}{{ project.media_src }}" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
                   {% elif project.media_type == "gif" %}
                     <img
-                      src="{% static project.media_src %}"
+                      src="{{ MEDIA_URL }}{{ project.media_src }}"
                       alt="{{ project.title }} demo"
                       class="img-fluid"
                       loading="lazy"
@@ -65,7 +65,7 @@
                     >
                   {% else %}
                     <img
-                      src="{% static project.image %}"
+                      src="{{ MEDIA_URL }}{{ project.image }}"
                       alt="{{ project.title }}"
                       class="img-fluid"
                       loading="lazy"
