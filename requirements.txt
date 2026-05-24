@@ -8,3 +8,4 @@ jdatetime==5.3.0
 pillow==12.2.0
 python-dotenv==1.2.2
 sqlparse==0.5.5
+whitenoise==6.9.0
