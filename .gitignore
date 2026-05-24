@@ -11,3 +11,6 @@ __pycache__
 static/.DS_Store
 .DS_Store
 static/img/.DS_Store
+static_dev/
+db.sqlite3
+database/
