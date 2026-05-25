@@ -96,8 +96,8 @@
               <h2>Project Overview</h2>
               {% for section in structured_overview %}
                 {% if section.text %}
-                <h3>{{ section.title }}</h3>
-                <p>{{ section.text }}</p>
+                <h3 dir="rtl" style="text-align: right;">{{ section.title }}</h3>
+                <p dir="rtl" style="text-align: right;">{{ section.text }}</p>
                 {% endif %}
               {% endfor %}
 

@@ -24,10 +24,10 @@ class ProjectDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         overview_points = list(self.object.overview_points.order_by('id'))
         section_titles = [
-            "مسئله / Problem",
-            "راه‌حل / Solution",
-            "تصمیم‌های فنی / Technical Decisions",
-            "نتیجه / Outcome",
+            "مسئله",
+            "راه‌حل",
+            "تصمیم‌های فنی",
+            "نتیجه",
         ]
         structured_overview = []
         for idx, title in enumerate(section_titles):

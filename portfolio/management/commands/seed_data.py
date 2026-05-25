@@ -22,10 +22,10 @@ class Command(BaseCommand):
                     "url": "https://github.com/Aramesh-Aria/AcaSmart-repo",
                 },
                 "overview": [
-                    "مسئله: آموزشگاه پیش از این برای پرداخت‌ها، حضور و غیاب و گزارش‌ها به ثبت دستی و دفتری وابسته بود. Problem: The academy relied on manual records for attendance, payments, and monthly reporting.",
-                    "راه‌حل: AcaSmart را به عنوان یک اپ دسکتاپ با Python، PySide6 و SQLite پیاده‌سازی کردم تا مدیریت هنرجو، استاد، کلاس، جلسه و پیامک یادآوری در یک سیستم یکپارچه انجام شود. Solution: I built a desktop workflow that centralizes student, teacher, class, session, and SMS reminder operations.",
-                    "تصمیم‌های فنی: منطق برنامه از رابط کاربری جدا شد و ماژول‌های اصلی مستقل طراحی شدند تا نگه‌داری آسان‌تر و خطاهای عملیاتی کمتر شود. Technical Decisions: I separated UI from core logic and kept modules isolated for maintainability and safer changes.",
-                    "نتیجه: فرایندهای ثبت جلسات، پیگیری پرداختی‌ها و آماده‌سازی گزارش برای مدیریت سریع‌تر و قابل اتکاتر شد. Outcome: Daily academy operations became more consistent and easier to track.",
+                    " آموزشگاه پیش از این برای پرداخت‌ها، حضور و غیاب و گزارش‌ها به ثبت دستی و دفتری وابسته بود.",
+                    " AcaSmart را به عنوان یک اپ دسکتاپ با Python، PySide6 و SQLite پیاده‌سازی کردم تا مدیریت هنرجو، استاد، کلاس، جلسه و پیامک یادآوری در یک سیستم یکپارچه انجام شود.",
+                    " منطق برنامه از رابط کاربری جدا شد و ماژول‌های اصلی مستقل طراحی شدند تا نگه‌داری آسان‌تر و خطاهای عملیاتی کمتر شود.",
+                    " فرایندهای ثبت جلسات، پیگیری پرداختی‌ها و آماده‌سازی گزارش برای مدیریت سریع‌تر و قابل اتکاتر شد.",
                 ],
                 "features": [
                     {
@@ -71,10 +71,10 @@ class Command(BaseCommand):
                     "url": "https://github.com/Aramesh-Aria/NewsReaderBot",
                 },
                 "overview": [
-                    "مسئله: به یک ابزار شخصی نیاز داشتم که خبرها را از منابع انتخابی جمع‌آوری و دوره‌ای ارسال کند. Problem: I needed a reliable personal news workflow instead of manual browsing.",
-                    "راه‌حل: یک ربات تلگرام با Python ساختم که با تنظیمات کاربر، اخبار را از منابع منتخب دریافت و به‌صورت زمان‌بندی‌شده (هر ۸ ساعت) ارسال می‌کند. Solution: The bot lets each user choose topics/sources and receive scheduled updates.",
-                    "تصمیم‌های فنی: ذخیره ترجیحات کاربر و لایه داده با SQLAlchemy مدیریت می‌شود و Alembic برای مهاجرت دیتابیس استفاده شده است. Technical Decisions: I used SQLAlchemy for data modeling and Alembic for schema migrations.",
-                    "نتیجه: فرآیند دریافت خبر از حالت دستی به یک سرویس تکرارپذیر و قابل تنظیم تبدیل شد. Outcome: News delivery became automated, consistent, and user-controlled.",
+                    " به یک ابزار شخصی نیاز داشتم که خبرها را از منابع انتخابی جمع‌آوری و دوره‌ای ارسال کند.",
+                    " یک ربات تلگرام با Python ساختم که با تنظیمات کاربر، اخبار را از منابع منتخب دریافت و به‌صورت زمان‌بندی‌شده (هر ۸ ساعت) ارسال می‌کند.",
+                    " ذخیره ترجیحات کاربر و لایه داده با SQLAlchemy مدیریت می‌شود و Alembic برای مهاجرت دیتابیس استفاده شده است.",
+                    " فرآیند دریافت خبر به جای دریافت از سایت ها به یک ربات تلگرامی قابل تنظیم تبدیل شد.",
                 ],
                 "features": [
                     {
@@ -124,10 +124,10 @@ class Command(BaseCommand):
                     "url": "https://aramesh-academy.ir",
                 },
                 "overview": [
-                    "مسئله: مجموعه برای معرفی خدمات، مدیریت محتوای آموزشی و دریافت درخواست هنرجویان به یک وب‌سایت عملیاتی نیاز داشت. Problem: The academy needed a production website for content, schedules, and inquiries.",
-                    "راه‌حل: وب‌سایت آکادمی آرامش را با Django پیاده‌سازی کردم تا صفحات، گالری، اساتید و برنامه کلاس‌ها از پنل مدیریت قابل به‌روزرسانی باشد. Solution: I built a Django backend with admin-driven content updates.",
-                    "تصمیم‌های فنی: مدل‌ها به‌صورت ساختاریافته تعریف شدند، Viewها با الگوی class-based پیاده‌سازی شد و فرم تماس به ثبت پیام در دیتابیس متصل است. Technical Decisions: Structured models, CBVs, and database-backed contact handling were used.",
-                    "نتیجه: تیم آموزشگاه بدون وابستگی به تغییر کد، محتوای سایت را مدیریت می‌کند و مسیر ارتباطی هنرجوها رسمی‌تر شده است. Outcome: The academy can maintain site content operationally via admin workflows.",
+                    " مجموعه برای معرفی خدمات، مدیریت محتوای آموزشی و دریافت درخواست هنرجویان به یک وب‌سایت عملیاتی نیاز داشت.",
+                    " وب‌سایت آکادمی آرامش را با Django پیاده‌سازی کردم تا صفحات، گالری، اساتید و برنامه کلاس‌ها از پنل مدیریت قابل به‌روزرسانی باشد.",
+                    " مدل‌ها به‌صورت ساختاریافته تعریف شدند، Viewها با الگوی class-based پیاده‌سازی شد و فرم تماس به ثبت پیام در دیتابیس متصل است.",
+                    " تیم آموزشگاه بدون وابستگی به تغییر کد، محتوای سایت را مدیریت می‌کند و مسیر ارتباطی هنرجوها رسمی‌تر شده است.",
                 ],
                 "features": [
                     {
