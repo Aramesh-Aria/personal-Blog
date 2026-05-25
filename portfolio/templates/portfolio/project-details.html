@@ -94,8 +94,11 @@
           <div class="col-lg-12">
             <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
               <h2>Project Overview</h2>
-              {% for point in project.overview_points.all %}
-                <p>{{ point.text }}</p>
+              {% for section in structured_overview %}
+                {% if section.text %}
+                <h3>{{ section.title }}</h3>
+                <p>{{ section.text }}</p>
+                {% endif %}
               {% endfor %}
 
               {% if project.features.all %}
