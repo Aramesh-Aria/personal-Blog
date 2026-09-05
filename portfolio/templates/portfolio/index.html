@@ -21,7 +21,7 @@
             <div class="profile-card">
               <div class="profile-header">
                 <div class="profile-image">
-                 <img src="{{ MEDIA_URL }}profile/profile-square-2.webp" alt="Profile Image" class="img-fluid" loading="lazy" decoding="async">                </div>
+                 <img src="{{ MEDIA_URL }}profile/profile-4.webp" alt="Profile Image" class="img-fluid" loading="lazy" decoding="async">                </div>
                 <div class="profile-badge">
                   <i class="bi bi-check-circle-fill"></i>
                 </div>
@@ -37,6 +37,10 @@
                     <i class="bi bi-telephone"></i>
                     +989371584080
                   </a>
+                  <a href="https://github.com/Aramesh-Aria" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <i class="bi bi-github"></i>
+                    github.com/Aramesh-Aria
+                  </a>
                   <a href="#" class="contact-item">
                     <i class="bi bi-geo-alt"></i>
                     Tehran, IR
@@ -50,15 +54,15 @@
             <div class="about-content">
               <div class="section-header">
                 <span class="badge-text">Get to Know Me</span>
-                <h2>درباره من</h2>
+                <h2 dir="rtl" style="text-align: right;" >درباره من</h2>
               </div>
 
-              <div class="description">
-                <p align="right">
-                من فارغ‌التحصیل علوم کامپیوتر هستم و مسیر حرفه‌ای خود را روی توسعه‌ی نرم‌افزارهای بک اند و کار با پایگاه داده متمرکز کرده‌ام
+              <div class="description" dir="rtl" style="text-align: right;">
+                <p>
+                توسعه‌دهنده‌ی بک‌اند با تمرکز بر Python و Django هستم و هم‌زمان کارشناسی ارشد مهندسی کامپیوتر (گرایش شبکه) می‌خوانم. در یک سال گذشته دو محصول را از صفر تا تحویل به کاربر نهایی رسانده‌ام؛ یک وب‌اپلیکیشن Django روی دامنه‌ی اختصاصی که کارفرما روزانه از پنل ادمین آن استفاده می‌کند، و یک نرم‌افزار دسکتاپ با هفت نسخه‌ی منتشرشده که هنوز توسعه و نگهداری‌اش می‌کنم
                 </p>
-                <p align="right">
-                هدف من ورود به تیمی است که بتوانم در آن روی محصول واقعی کار کنم، کیفیت کد را جدی بگیرم و تجربه‌ی عملی بیشتری به دست بیاورم
+                <p>
+                هم‌اکنون سامانه‌ی یک کلینیک و داروخانه‌ی دامپزشکی را با Django و PostgreSQL توسعه می‌دهم و روی Django REST Framework و Docker تمرین می‌کنم. دنبال تیمی در تهران می‌گردم که کدم در آن بازبینی شود و استاندارد کار تیمی، تست‌نویسی و کنترل نسخه‌ی حرفه‌ای را یاد بگیرم
                 </p>
               </div>
 
@@ -66,7 +70,7 @@
                 <div class="detail-row">
                   <div class="detail-item">
                     <span class="detail-label">Specialization</span>
-                    <span class="detail-value">Python / Django / SQL</span>
+                    <span class="detail-value">Python / Django / PostgreSQL</span>
                   </div>
                   <div class="detail-item">
                     <span class="detail-label">Experience Level</span>
@@ -76,11 +80,21 @@
                 <div class="detail-row">
                   <div class="detail-item">
                     <span class="detail-label">تحصیلات</span>
-                    <span class="detail-value">لیسانس علوم کامپیوتر , دانشگاه مازندران</span>
+                    <span class="detail-value">ارشد مهندسی کامپیوتر (در حال تحصیل) , دانشگاه آزاد اسلامی</span>
                   </div>
                   <div class="detail-item">
                     <span class="detail-label">زبان</span>
                     <span class="detail-value">Persian (Native), English</span>
+                  </div>
+                </div>
+                <div class="detail-row">
+                  <div class="detail-item">
+                    <span class="detail-label">در حال یادگیری</span>
+                    <span class="detail-value">Django REST Framework, Docker</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">همکاری</span>
+                    <span class="detail-value">تمام‌وقت، حضوری - تهران</span>
                   </div>
                 </div>
               </div>
@@ -92,7 +106,7 @@
                   
                   تماس با من
                 </a> -->
-                <a href="{% static 'files/my_resume_2.pdf' %}" class="btn btn-primary" download>
+                <a href="{% static 'files/my_resume_3.pdf' %}" class="btn btn-primary" download>
                   <i class="bi bi-download"></i>
                   دانلود رزومه
                 </a>
@@ -124,16 +138,28 @@
                     <span>Django</span>
                   </div>
                   <div class="technical-skill">
-                    <i class="devicon-mysql-plain colored" aria-hidden="true"></i>
-                    <span>SQL</span>
+                    <i class="devicon-postgresql-plain colored" aria-hidden="true"></i>
+                    <span>PostgreSQL</span>
                   </div>
                   <div class="technical-skill">
-                    <i class="devicon-flask-original" aria-hidden="true"></i>
-                    <span>Flask</span>
+                    <i class="devicon-sqlite-plain colored" aria-hidden="true"></i>
+                    <span>SQLite</span>
+                  </div>
+                  <div class="technical-skill">
+                    <i class="devicon-qt-original colored" aria-hidden="true"></i>
+                    <span>PySide6</span>
+                  </div>
+                  <div class="technical-skill">
+                    <i class="devicon-pytest-plain colored" aria-hidden="true"></i>
+                    <span>pytest</span>
                   </div>
                   <div class="technical-skill">
                     <i class="devicon-git-plain colored" aria-hidden="true"></i>
                     <span>Git</span>
+                  </div>
+                  <div class="technical-skill">
+                    <i class="devicon-docker-plain colored" aria-hidden="true"></i>
+                    <span>Docker</span>
                   </div>
                 </div>
               </div>
@@ -142,15 +168,37 @@
 
           <div class="col-lg-8 ps-4 ps-lg-5">
             <div class="resume-section" data-aos="fade-up" data-aos-delay="100">
-              <h3><i class="bi bi-mortarboard me-2"></i>تحصیلات</h3>
-              <div class="resume-item">
+              <h3 dir="rtl" style="text-align: right;"><i class="bi bi-briefcase me-2"></i> تجربه‌ی پروژه‌ای</h3>
+              <div class="resume-item" dir="rtl" style="text-align: right;">
+                <h4>توسعه‌دهنده‌ی بک‌اند (پروژه‌ای) — سامانه‌ی کلینیک و داروخانه‌ی دامپزشکی</h4>
+                <h5>1405 - در حال توسعه</h5>
+                <p class="company"><i class="bi bi-building"></i>پروژه‌ی مستقل، پیش از انتشار</p>
+                <p>سامانه‌ای یازده‌اپه با Django و PostgreSQL شامل احراز هویت با کد یک‌بارمصرف، کاتالوگ محصولات، نوبت‌دهی و مدیریت نسخه‌ی دارو؛ با تست‌نویسی pytest و مستندسازی تصمیم‌های معماری در قالب ADR.</p>
+              </div>
+              <div class="resume-item" dir="rtl" style="text-align: right;">
+                <h4>توسعه‌دهنده‌ی بک‌اند (پروژه‌ای) — وب‌سایت آموزشگاه موسیقی آرامش</h4>
+                <h5>1404 - اکنون</h5>
+                <p class="company"><i class="bi bi-building"></i>aramesh-academy.ir</p>
+                <p>طراحی و پیاده‌سازی با Django در هشت اپ مجزا؛ مدیریت اساتید، گالری و تقویم جلسات از پنل ادمین بدون نیاز به تغییر کد، دیپلوی‌شده روی Runflare با دامنه‌ی اختصاصی و HTTPS.</p>
+              </div>
+              <div class="resume-item" dir="rtl" style="text-align: right;">
+                <h4>توسعه‌دهنده‌ی نرم‌افزار (پروژه‌ای) — AcaSmart، سامانه‌ی مدیریت آموزشگاه موسیقی</h4>
+                <h5>1403 - اکنون</h5>
+                <p class="company"><i class="bi bi-building"></i>در حال استفاده و نگهداری</p>
+                <p>نرم‌افزار دسکتاپ با PySide6 و معماری شی‌گرا؛ ۱۴۴ کامیت و هفت نسخه‌ی منتشرشده، همراه با سیستم لایسنس و بیلد نصبی برای ویندوز و مک.</p>
+              </div>
+            </div>
+
+            <div class="resume-section" data-aos="fade-up" data-aos-delay="150">
+              <h3 dir="rtl" style="text-align: right;"><i class="bi bi-mortarboard me-2"></i> تحصیلات</h3>
+              <div class="resume-item" dir="rtl" style="text-align: right;">
                 <h4>لیسانس علوم کامپیوتر</h4>
                 <h5>1398-1403</h5>
                 <p class="company"><i class="bi bi-building"></i>دانشگاه مازندران - بابلسر</p>
               </div>
-              <div class="resume-item">
+              <div class="resume-item" dir="rtl" style="text-align: right;">
                 <h4>فوق لیسانس مهندسی و علم شبکه های کامپیوتری</h4>
-                <h5>1403-Present</h5>
+                <h5>1403 - اکنون</h5>
                 <p class="company"><i class="bi bi-building"></i>دانشگاه علوم و تحقیقات - تهران</p>
               </div>
             </div>
@@ -183,15 +231,24 @@
                 {% for project in projects %}
                 <div class="col-lg-6 col-md-6 portfolio-item isotope-item {{ project.filter_class }}">
                 <div class="portfolio-wrap">
+                  {% if project.media_type == "placeholder" %}
+                  <div class="portfolio-placeholder">
+                    <i class="bi bi-code-slash"></i>
+                    <span>در حال توسعه</span>
+                  </div>
+                  {% else %}
                   <img src="{{ MEDIA_URL }}{{ project.image }}" class="img-fluid" alt="{{ project.title }}" loading="lazy">
+                  {% endif %}
                   <div class="portfolio-info">
                     <div class="content">
                       <span class="category">{{ project.category }}</span>
                       <h4>{{ project.title }}</h4>
                       <div class="portfolio-links">
+                        {% if project.media_type != "placeholder" %}
                         <a href="{{ MEDIA_URL }}{{ project.image }}" class="glightbox" title="{{ project.title }}">
                           <i class="bi bi-plus-lg"></i>
                         </a>
+                        {% endif %}
                         <a href="{% url 'project_detail' project.id %}">
                           <i class="bi bi-arrow-right"></i>
                         </a>
@@ -246,8 +303,8 @@
 
           <div class="col-lg-7">
             <div class="contact-form">
-              <h3 align="right">!پیام بفرستید</h3>
-              <p align="right">پیام شما مستقیماً برای من ارسال می‌شود. در اولین فرصت پاسخ می‌دهم</p>
+              <h3 dir="rtl" style="text-align: right;">!پیام بفرستید</h3>
+              <p dir="rtl" style="text-align: right;">پیام شما مستقیماً برای من ارسال می‌شود. در اولین فرصت پاسخ می‌دهم</p>
 
               {% if messages %}
                 <div class="mb-3">

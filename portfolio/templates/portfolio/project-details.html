@@ -43,7 +43,12 @@
 
               <div class="swiper-wrapper align-items-center">
                 <div class="swiper-slide">
-                  {% if project.media_type == "video" %}
+                  {% if project.media_type == "placeholder" %}
+                    <div class="portfolio-placeholder portfolio-placeholder-large">
+                      <i class="bi bi-code-slash"></i>
+                      <span>در حال توسعه، پیش از انتشار</span>
+                    </div>
+                  {% elif project.media_type == "video" %}
                     <video
                       id="project-video"
                       class="img-fluid w-100"

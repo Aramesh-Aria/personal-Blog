@@ -152,6 +152,55 @@ class Command(BaseCommand):
                     },
                 ],
             },
+            {
+                "id": 4,
+                "title": "Vet Clinic & Pharmacy Management System",
+                "category": "Backend Development | Django | PostgreSQL",
+                "filter_class": "filter-design",
+                "image": "portfolio/project-4.webp",
+                "media": {
+                    "type": "image",
+                    "src": "portfolio/project-4.webp",
+                    "poster": None,
+                },
+                "info": {
+                    "date": "1405 - در حال توسعه",
+                    "url": "https://github.com/Aramesh-Aria/vet-pharmecy",
+                },
+                "overview": [
+                    " کلینیک و داروخانه‌ی دامپزشکی به سامانه‌ای نیاز داشت که کاتالوگ محصولات، مدیریت دام و گله، نوبت‌دهی و نسخه‌های دارویی را در یک پلتفرم فارسی و راست‌به‌چپ یکپارچه کند.",
+                    " با Django 5 و PostgreSQL یک وب‌اپلیکیشن یازده‌اپه ساختم؛ احراز هویت با شماره موبایل و کد یک‌بارمصرف، کاتالوگ محصولات بر اساس دسته‌بندی دام، سبد خرید و چرخه‌ی سفارش، نسخه و درخواست تمدید دارو، نوبت‌دهی با تأیید کارکنان، و ثبت سوابق ویزیت و واکسیناسیون را پیاده‌سازی کردم.",
+                    " لایه‌ی اعلان را پشت یک رابط قابل جایگزینی نوشتم تا بک‌اند پیامک یا ایمیل بدون تغییر کد فراخوان عوض شود، یادآوری واکسن را با یک دستور مدیریتی زمان‌بندی‌شده اجرا کردم، تنظیمات را به سه لایه‌ی base/dev/prod تقسیم کردم (SQLite در توسعه، PostgreSQL در انتشار)، و تست‌ها را با pytest نوشتم و تصمیم‌های معماری را در قالب ADR مستند کردم.",
+                    " انتشار روی Runflare با Gunicorn و WhiteNoise پیکربندی شده و پروژه در حال تکمیل اطلاعات نهایی سمت کارفرما پیش از راه‌اندازی رسمی است.",
+                ],
+                "features": [
+                    {
+                        "icon": "bi bi-shield-lock",
+                        "title": "OTP Authentication",
+                        "description": "احراز هویت با شماره موبایل و کد یک‌بارمصرف بدون نیاز به رمز عبور ثابت.",
+                    },
+                    {
+                        "icon": "bi bi-cart3",
+                        "title": "Product Catalog & Cart",
+                        "description": "کاتالوگ محصولات به تفکیک دسته‌ی دام، سبد خرید و چرخه‌ی کامل سفارش.",
+                    },
+                    {
+                        "icon": "bi bi-capsule",
+                        "title": "Prescription & Refill Requests",
+                        "description": "ثبت نسخه و درخواست تمدید دارو با پیگیری وضعیت برای هر بیمار.",
+                    },
+                    {
+                        "icon": "bi bi-calendar2-check",
+                        "title": "Appointment Booking",
+                        "description": "نوبت‌دهی آنلاین با تأیید کارکنان و ثبت سوابق ویزیت و واکسیناسیون.",
+                    },
+                    {
+                        "icon": "bi bi-bell",
+                        "title": "Pluggable Notifications",
+                        "description": "لایه‌ی اعلان با رابط قابل جایگزینی برای تعویض بک‌اند پیامک یا ایمیل بدون تغییر کد فراخوان.",
+                    },
+                ],
+            },
         ]
 
         for p_data in projects_data:

@@ -9,8 +9,9 @@ class Project(models.Model):
     MEDIA_TYPE_CHOICES = [
         ('image', 'Image'),
         ('video', 'Video'),
+        ('placeholder', 'Placeholder (no media yet)'),
     ]
-    media_type = models.CharField(max_length=10, choices=MEDIA_TYPE_CHOICES, default='image')
+    media_type = models.CharField(max_length=11, choices=MEDIA_TYPE_CHOICES, default='image')
     media_src = models.CharField(max_length=255)
     media_poster = models.CharField(max_length=255, blank=True, null=True)
     
