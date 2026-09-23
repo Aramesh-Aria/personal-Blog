@@ -3,6 +3,12 @@
 
 {% block title %}Service Details - SnapFolio{% endblock %}
 
+{% block og_title_content %}Services - Aria Aramesh{% endblock %}
+{% block og_description_content %}Backend development services including Python, Django, PostgreSQL, and more.{% endblock %}
+{% block og_image_content %}{{ default_og_image_full }}{% endblock %}
+{% block og_url_content %}{{ SITE_URL }}{{ request.path }}{% endblock %}
+{% block og_type_content %}website{% endblock %}
+
 {% block body_class %}service-details-page{% endblock %}
 
 {% block content %}
@@ -42,25 +48,16 @@
               </script>
               <div class="swiper-wrapper align-items-center">
                 <div class="swiper-slide">
-                  <img src="{% static 'media/services/services-1.webp' %}" alt="" class="img-fluid" loading="lazy">
-                </div>
-                <div class="swiper-slide">
-                  <img src="{% static 'media/services/services-2.webp' %}" alt="" class="img-fluid" loading="lazy">
-                </div>
-                <div class="swiper-slide">
-                  <img src="{% static 'media/services/services-3.webp' %}" alt="" class="img-fluid" loading="lazy">
+                  <img src="{{ default_og_image_full }}" alt="Services" class="img-fluid" loading="lazy">
                 </div>
               </div>
               <div class="swiper-pagination"></div>
             </div>
 
             <div class="content mt-5">
-              <h3>Digital Marketing Solutions</h3>
+              <h3>Backend Development Services</h3>
               <p>
-                Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka. Aut quiatem. Ut earum tempore quidem qui recusandae distinctio quo.
-              </p>
-              <p>
-                Et officiis id est ad voluptates sint quia architecto aut soluta eum voluptatum rerum illo mara. Ut earum tempore quidem qui recusandae distinctio quo. Veniam maiores eos cumque distinctio.
+                Building robust backend systems with Python, Django, and PostgreSQL. From API development to database design and deployment automation.
               </p>
 
               <div class="features mt-4">
@@ -68,33 +65,29 @@
                   <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="feature-box d-flex align-items-center">
                       <i class="bi bi-check"></i>
-                      <h4>Search Engine Optimization</h4>
+                      <h4>API Development (REST/GraphQL)</h4>
                     </div>
                   </div>
                   <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="feature-box d-flex align-items-center">
                       <i class="bi bi-check"></i>
-                      <h4>Social Media Marketing</h4>
+                      <h4>Database Design & Optimization</h4>
                     </div>
                   </div>
                   <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="feature-box d-flex align-items-center">
                       <i class="bi bi-check"></i>
-                      <h4>Content Marketing Strategy</h4>
+                      <h4>Django Application Development</h4>
                     </div>
                   </div>
                   <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="feature-box d-flex align-items-center">
                       <i class="bi bi-check"></i>
-                      <h4>Email Marketing Campaigns</h4>
+                      <h4>Deployment & CI/CD</h4>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <p class="mt-4">
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-              </p>
             </div>
           </div>
 
@@ -103,37 +96,18 @@
               <h4>Service Information</h4>
               <div class="info-item">
                 <i class="bi bi-clock"></i>
-                <h5>Project Duration</h5>
-                <p>3-6 months</p>
+                <h5>Availability</h5>
+                <p>Open for freelance/contract work</p>
               </div>
               <div class="info-item">
                 <i class="bi bi-person-check"></i>
-                <h5>Project Manager</h5>
-                <p>Sarah Johnson</p>
+                <h5>Developer</h5>
+                <p>Aria Aramesh</p>
               </div>
               <div class="info-item">
                 <i class="bi bi-telephone"></i>
-                <h5>Contact Support</h5>
-                <p>+1 (555) 123-4567</p>
-              </div>
-            </div>
-
-            <div class="related-services mt-5">
-              <h4>Related Services</h4>
-              <div class="service-item">
-                <i class="bi bi-bar-chart"></i>
-                <h5><a href="#">Business Analytics</a></h5>
-                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-              </div>
-              <div class="service-item">
-                <i class="bi bi-briefcase"></i>
-                <h5><a href="#">Business Consulting</a></h5>
-                <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
-              </div>
-              <div class="service-item">
-                <i class="bi bi-graph-up"></i>
-                <h5><a href="#">Financial Planning</a></h5>
-                <p>Sed perspiciatis omnis iste natus error sit voluptatem doloremque</p>
+                <h5>Contact</h5>
+                <p><a href="mailto:aramesh_aria@yahoo.com">aramesh_aria@yahoo.com</a></p>
               </div>
             </div>
           </div>

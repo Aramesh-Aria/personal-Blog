@@ -1,0 +1,17 @@
+{% load static %}
+{# Open Graph / Facebook / LinkedIn / WhatsApp / Telegram / Discord #}
+<meta property="og:title" content="{{ og_title|default:default_og_title }}">
+<meta property="og:description" content="{{ og_description|default:default_og_description }}">
+<meta property="og:image" content="{{ og_image|default:default_og_image_full }}">
+<meta property="og:url" content="{{ og_url|default:default_og_url }}">
+<meta property="og:type" content="{{ og_type|default:default_og_type }}">
+<meta property="og:site_name" content="Aria Aramesh">
+
+{# Twitter / X Cards #}
+<meta name="twitter:card" content="{{ twitter_card|default:'summary_large_image' }}">
+<meta name="twitter:title" content="{{ og_title|default:default_og_title }}">
+<meta name="twitter:description" content="{{ og_description|default:default_og_description }}">
+<meta name="twitter:image" content="{{ og_image|default:default_og_image_full }}">
+
+{# Additional meta tags #}
+<meta name="theme-color" content="#2c3e50">

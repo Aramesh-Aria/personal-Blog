@@ -8,6 +8,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/devicon.min.css">
 {% endblock %}
 
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Aria Aramesh",
+  "url": "{{ SITE_URL }}/",
+  "image": "{{ SITE_URL }}{% static 'img/profile-4.webp' %}",
+  "jobTitle": "Backend Developer",
+  "description": "Backend developer focused on Python, Django, and PostgreSQL. Building real-world applications from idea to production.",
+  "sameAs": [
+    "https://github.com/Aramesh-Aria",
+    "https://www.linkedin.com/in/aria-aramesh/",
+    "mailto:aramesh_aria@yahoo.com"
+  ],
+  "knowsAbout": ["Python", "Django", "PostgreSQL", "SQLite", "PySide6", "pytest", "Git", "Docker"],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance / Open to opportunities"
+  }
+}
+</script>
+{% endblock %}
+
 {% block content %}
     {% include "portfolio/partials/_hero.html" %}
 

@@ -5,6 +5,7 @@ class Project(models.Model):
     category = models.CharField(max_length=200)
     filter_class = models.CharField(max_length=50)
     image = models.CharField(max_length=255)  # Path to thumbnail
+    og_image = models.CharField(max_length=255, blank=True, null=True, help_text="Custom Open Graph image (1200x630). Falls back to thumbnail.")
     
     MEDIA_TYPE_CHOICES = [
         ('image', 'Image'),

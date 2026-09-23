@@ -9,6 +9,10 @@
   <meta name="description" content="{% block meta_description %}{% endblock %}">
   <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 
+  {% include "portfolio/partials/_meta_tags.html" %}
+
+  {% block json_ld %}{% endblock %}
+
   <!-- Favicons -->
   <link href="{% static 'img/favicon.png' %}" rel="icon">
   <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">

@@ -5,6 +5,34 @@
 
 {% block body_class %}project-details-page{% endblock %}
 
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ project.title }}",
+  "description": "{% for section in structured_overview %}{% if section.text %}{{ section.text|truncatechars:200 }}{% endif %}{% endfor %}",
+  "url": "{{ SITE_URL }}{{ request.path }}",
+  "image": "{% if project.og_image %}{{ SITE_URL }}{{ MEDIA_URL }}{{ project.og_image }}{% else %}{{ SITE_URL }}{{ MEDIA_URL }}{{ project.image }}{% endif %}",
+  "applicationCategory": "{{ project.category }}",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "IRR"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Aria Aramesh",
+    "url": "{{ SITE_URL }}/"
+  }
+  {% if project.url %},
+  "downloadUrl": "{{ project.url }}"
+  {% endif %}
+}
+</script>
+{% endblock %}
+
 {% block content %}
     <!-- Page Title -->
     <div class="page-title dark-background">
