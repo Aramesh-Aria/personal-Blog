@@ -200,10 +200,17 @@
                 <p class="company"><i class="bi bi-building"></i>دانشگاه علوم و تحقیقات - تهران</p>
               </div>
               <div class="cta-section" style="text-align: center; margin-top: 20px;">
+                {% if active_resume %}
+                <a href="{{ active_resume.file.url }}" class="btn btn-primary" download>
+                  <i class="bi bi-download"></i>
+                  دانلود رزومه
+                </a>
+                {% else %}
                 <a href="{% static 'files/my_resume_6.pdf' %}" class="btn btn-primary" download>
                   <i class="bi bi-download"></i>
                   دانلود رزومه
                 </a>
+                {% endif %}
               </div>
             </div>
           </div>

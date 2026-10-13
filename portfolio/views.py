@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
-from .models import Project, ContactMessage
+from .models import Project, ContactMessage, Resume
 from .forms import ContactForm
 
 
@@ -15,6 +15,7 @@ class IndexView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['projects'] = Project.objects.all()
         context['form'] = ContactForm()
+        context['active_resume'] = Resume.objects.filter(is_active=True).first()
         context['og_title'] = 'Aria Aramesh — Backend Developer'
         context['og_description'] = 'Backend developer focused on Python, Django, and PostgreSQL. Building real-world applications from idea to production.'
         context['og_image'] = f"{settings.SITE_URL}{settings.STATIC_URL}{staticfiles_storage.hashed_name('img/og-image.webp')}"

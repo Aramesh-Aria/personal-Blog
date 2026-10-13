@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Project, ProjectOverview, ProjectFeature, ContactMessage
+from django.contrib import messages
+from .models import Project, ProjectOverview, ProjectFeature, ContactMessage, Resume
 
 class ProjectOverviewInline(admin.TabularInline):
     model = ProjectOverview
@@ -20,3 +21,37 @@ class ContactMessageAdmin(admin.ModelAdmin):
     readonly_fields = ('name', 'email', 'subject', 'message', 'created_at')
     search_fields = ('name', 'email', 'subject')
     list_filter = ('created_at',)
+
+@admin.register(Resume)
+class ResumeAdmin(admin.ModelAdmin):
+    list_display = ('title', 'date', 'is_active', 'file_size_display', 'file_extension')
+    list_filter = ('is_active', 'date')
+    readonly_fields = ('date', 'file_size_display', 'file_extension')
+    fields = ('title', 'file', 'is_active', 'date', 'file_size_display', 'file_extension')
+
+    def file_size_display(self, obj):
+        if obj.file:
+            size = obj.file.size
+            if size < 1024:
+                return f"{size} B"
+            elif size < 1024 * 1024:
+                return f"{size / 1024:.1f} KB"
+            else:
+                return f"{size / (1024 * 1024):.1f} MB"
+        return "-"
+    file_size_display.short_description = 'File Size'
+
+    def file_extension(self, obj):
+        if obj.file:
+            return obj.file.name.split('.')[-1].lower()
+        return "-"
+    file_extension.short_description = 'Type'
+
+    def save_model(self, request, obj, form, change):
+        if obj.file and obj.file.size > 5 * 1024 * 1024:
+            messages.error(request, "File size must be less than 5MB.")
+            return
+        if obj.file and not obj.file.name.lower().endswith('.pdf'):
+            messages.error(request, "Only PDF files are allowed.")
+            return
+        super().save_model(request, obj, form, change)

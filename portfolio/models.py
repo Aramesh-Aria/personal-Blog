@@ -47,3 +47,41 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"Message from {self.name} - {self.subject}"
+
+
+def resume_upload_to(instance, filename):
+    from django.utils import timezone
+    timestamp = timezone.now().strftime('%Y%m%d_%H%M%S')
+    name, ext = filename.rsplit('.', 1)
+    return f'resumes/{name}_{timestamp}.{ext}'
+
+
+class Resume(models.Model):
+    title = models.CharField(max_length=200, default='Resume')
+    file = models.FileField(upload_to=resume_upload_to)
+    date = models.DateField(auto_now_add=True)
+    is_active = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'Resume'
+        verbose_name_plural = 'Resumes'
+
+    def __str__(self):
+        return f"{self.title} ({'Active' if self.is_active else 'Inactive'})"
+
+    def save(self, *args, **kwargs):
+        if self.is_active:
+            Resume.objects.exclude(pk=self.pk).filter(is_active=True).update(is_active=False)
+        super().save(*args, **kwargs)
+
+    @property
+    def file_size(self):
+        if self.file:
+            return self.file.size
+        return 0
+
+    @property
+    def file_extension(self):
+        if self.file:
+            return self.file.name.split('.')[-1].lower()
+        return ''
