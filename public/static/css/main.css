@@ -87,6 +87,58 @@ h6 {
   font-family: var(--heading-font);
 }
 
+/* PHP Email Form Messages
+------------------------------*/
+.php-email-form .error-message {
+  display: none;
+  background: #df1529;
+  color: #ffffff;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .sent-message {
+  display: none;
+  color: #ffffff;
+  background: #059652;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .loading {
+  display: none;
+  background: var(--surface-color);
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+}
+
+.php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid var(--accent-color);
+  border-top-color: var(--surface-color);
+  animation: php-email-form-loading 1s linear infinite;
+}
+
+@keyframes php-email-form-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
@@ -329,11 +381,6 @@ h6 {
   overflow: hidden;
   background: var(--background-color);
   transition: all 0.6s ease-out;
-}
-
-#preloader.loaded {
-  opacity: 0;
-  visibility: hidden;
 }
 
 #preloader:before {
@@ -603,9 +650,6 @@ section,
 }
 
 .hero .hero-actions .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
   padding: 14px 30px;
   font-size: 16px;
   font-weight: 600;
@@ -1034,15 +1078,13 @@ section,
   font-size: 1rem;
 }
 
-.about .cta-section,
-.resume .cta-section {
+.about .cta-section {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.about .cta-section .btn,
-.resume .cta-section .btn {
+.about .cta-section .btn {
   padding: 0.875rem 2rem;
   border-radius: 0.75rem;
   font-weight: 600;
@@ -1054,28 +1096,24 @@ section,
   border: 2px solid transparent;
 }
 
-.about .cta-section .btn.btn-primary,
-.resume .cta-section .btn.btn-primary {
+.about .cta-section .btn.btn-primary {
   background-color: var(--accent-color);
   color: var(--contrast-color);
 }
 
-.about .cta-section .btn.btn-primary:hover,
-.resume .cta-section .btn.btn-primary:hover {
+.about .cta-section .btn.btn-primary:hover {
   background-color: color-mix(in srgb, var(--accent-color), black 15%);
   transform: translateY(-2px);
   box-shadow: 0 10px 30px color-mix(in srgb, var(--accent-color), transparent 60%);
 }
 
-.about .cta-section .btn.btn-outline,
-.resume .cta-section .btn.btn-outline {
+.about .cta-section .btn.btn-outline {
   background-color: transparent;
   color: var(--default-color);
   border-color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
-.about .cta-section .btn.btn-outline:hover,
-.resume .cta-section .btn.btn-outline:hover {
+.about .cta-section .btn.btn-outline:hover {
   border-color: var(--accent-color);
   transform: translateY(-2px);
 }
@@ -1521,6 +1559,35 @@ section,
   }
 }
 
+.resume .cta-section {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.resume .cta-section .btn {
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid transparent;
+}
+
+.resume .cta-section .btn.btn-primary {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.resume .cta-section .btn.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color), black 15%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--accent-color), transparent 60%);
+}
+
 /*--------------------------------------------------------------
 # Portfolio Section
 --------------------------------------------------------------*/
@@ -1609,34 +1676,6 @@ section,
   width: 100%;
   height: 350px;
   object-fit: cover;
-}
-
-.portfolio-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  width: 100%;
-  height: 350px;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--surface-color), var(--accent-color) 10%), var(--surface-color));
-}
-
-.portfolio-placeholder i {
-  font-size: 3rem;
-  color: color-mix(in srgb, var(--accent-color), transparent 20%);
-}
-
-.portfolio-placeholder span {
-  color: var(--default-color);
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.portfolio-placeholder-large {
-  height: 100%;
-  min-height: 350px;
-  border-radius: 6px;
 }
 
 .portfolio .portfolio-wrap .portfolio-info {
