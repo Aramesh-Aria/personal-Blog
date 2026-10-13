@@ -3,8 +3,10 @@ from django.views.generic import TemplateView, DetailView, FormView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.conf import settings
+from django.contrib.staticfiles.storage import staticfiles_storage
 from .models import Project, ContactMessage
 from .forms import ContactForm
+
 
 class IndexView(TemplateView):
     template_name = 'portfolio/index.html'
@@ -15,11 +17,10 @@ class IndexView(TemplateView):
         context['form'] = ContactForm()
         context['og_title'] = 'Aria Aramesh — Backend Developer'
         context['og_description'] = 'Backend developer focused on Python, Django, and PostgreSQL. Building real-world applications from idea to production.'
-        context['og_image'] = f"{settings.SITE_URL}{settings.STATIC_URL}img/profile-4.webp"
+        context['og_image'] = f"{settings.SITE_URL}{staticfiles_storage.url('img/og-image.webp')}"
         context['og_url'] = f"{settings.SITE_URL}/"
         context['og_type'] = 'profile'
         return context
-
 class ProjectDetailView(DetailView):
     model = Project
     template_name = 'portfolio/project-details.html'
@@ -63,7 +64,7 @@ class ServiceDetailView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['og_title'] = 'Services - Aria Aramesh'
         context['og_description'] = 'Backend development services including Python, Django, PostgreSQL, and more.'
-        context['og_image'] = f"{settings.SITE_URL}{settings.STATIC_URL}img/og-image.webp"
+        context['og_image'] = f"{settings.SITE_URL}{staticfiles_storage.url('img/og-image.webp')}"
         context['og_url'] = f"{settings.SITE_URL}{self.request.path}"
         context['og_type'] = 'website'
         return context
