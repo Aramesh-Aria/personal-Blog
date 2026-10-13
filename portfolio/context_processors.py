@@ -20,7 +20,7 @@ def site_meta(request):
         'default_og_title': 'Aria Aramesh — Backend Developer',
         'default_og_description': 'Backend developer focused on Python, Django, and PostgreSQL. Building real-world applications from idea to production.',
         'default_og_image': 'img/og-image.webp',
-        'default_og_image_full': f"{site_url}{staticfiles_storage.url('img/og-image.webp')}",
+        'default_og_image_full': f"{site_url}{static_url}{staticfiles_storage.hashed_name('img/og-image.webp')}",
         'default_og_url': f"{site_url}/",
         'default_og_type': 'website',
     }

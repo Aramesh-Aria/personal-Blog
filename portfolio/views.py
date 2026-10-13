@@ -17,7 +17,7 @@ class IndexView(TemplateView):
         context['form'] = ContactForm()
         context['og_title'] = 'Aria Aramesh — Backend Developer'
         context['og_description'] = 'Backend developer focused on Python, Django, and PostgreSQL. Building real-world applications from idea to production.'
-        context['og_image'] = f"{settings.SITE_URL}{staticfiles_storage.url('img/og-image.webp')}"
+        context['og_image'] = f"{settings.SITE_URL}{settings.STATIC_URL}{staticfiles_storage.hashed_name('img/og-image.webp')}"
         context['og_url'] = f"{settings.SITE_URL}/"
         context['og_type'] = 'profile'
         return context
@@ -64,7 +64,7 @@ class ServiceDetailView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['og_title'] = 'Services - Aria Aramesh'
         context['og_description'] = 'Backend development services including Python, Django, PostgreSQL, and more.'
-        context['og_image'] = f"{settings.SITE_URL}{staticfiles_storage.url('img/og-image.webp')}"
+        context['og_image'] = f"{settings.SITE_URL}{settings.STATIC_URL}{staticfiles_storage.hashed_name('img/og-image.webp')}"
         context['og_url'] = f"{settings.SITE_URL}{self.request.path}"
         context['og_type'] = 'website'
         return context
