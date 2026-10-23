@@ -1,4 +1,5 @@
 import os
+import tempfile
 from io import BytesIO
 from django.test import TestCase, override_settings
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -175,3 +176,61 @@ class ResumeAdminTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertFalse(Resume.objects.filter(title="Large Resume").exists())
         self.assertContains(response, "File size must be less than 5MB")
+
+def make_webp(name="thumb.webp"):
+    from PIL import Image
+    buf = BytesIO()
+    Image.new("RGB", (4, 4), "red").save(buf, format="WEBP")
+    return SimpleUploadedFile(name, buf.getvalue(), content_type="image/webp")
+
+
+@override_settings(MEDIA_ROOT=tempfile.mkdtemp())
+class ProjectMediaUploadTest(TestCase):
+    def setUp(self):
+        from django.contrib.auth.models import User
+        self.admin = User.objects.create_superuser('admin', 'admin@example.com', 'pass')
+        self.client.force_login(self.admin)
+        self.project = Project.objects.create(
+            title="Demo",
+            category="Web",
+            filter_class="filter-web",
+            image="portfolio/old.webp",
+            media_type="video",
+            media_src="portfolio/old.mp4",
+            date="2026",
+        )
+
+    def admin_form_data(self, **overrides):
+        data = {
+            'title': 'Demo', 'category': 'Web', 'filter_class': 'filter-web',
+            'date': '2026', 'url': '', 'media_type': 'video',
+            'overview_points-TOTAL_FORMS': '0', 'overview_points-INITIAL_FORMS': '0',
+            'features-TOTAL_FORMS': '0', 'features-INITIAL_FORMS': '0',
+        }
+        data.update(overrides)
+        return data
+
+    def test_existing_path_renders_media_url(self):
+        response = self.client.get(reverse('project_detail', args=[self.project.pk]))
+        self.assertContains(response, 'src="/public/media/portfolio/old.mp4"')
+
+    def test_admin_replaces_thumbnail_and_video(self):
+        video = SimpleUploadedFile("new-demo.mp4", b"\x00\x00\x00\x18ftypmp42", content_type="video/mp4")
+        url = reverse('admin:portfolio_project_change', args=[self.project.pk])
+        response = self.client.post(url, self.admin_form_data(image=make_webp("new.webp"), media_src=video))
+        self.assertEqual(response.status_code, 302)
+
+        self.project.refresh_from_db()
+        self.assertTrue(self.project.image.name.startswith('portfolio/new'))
+        self.assertTrue(self.project.media_src.name.startswith('portfolio/new-demo'))
+
+        response = self.client.get(reverse('project_detail', args=[self.project.pk]))
+        self.assertContains(response, self.project.media_src.url)
+
+    def test_admin_rejects_unsupported_media_extension(self):
+        bad = SimpleUploadedFile("script.exe", b"MZ", content_type="application/octet-stream")
+        url = reverse('admin:portfolio_project_change', args=[self.project.pk])
+        response = self.client.post(url, self.admin_form_data(media_src=bad))
+        self.assertEqual(response.status_code, 200)
+        self.project.refresh_from_db()
+        self.assertEqual(self.project.media_src.name, 'portfolio/old.mp4')

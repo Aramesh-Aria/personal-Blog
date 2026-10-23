@@ -1,11 +1,15 @@
+from django.core.validators import FileExtensionValidator
 from django.db import models
+
+PROJECT_MEDIA_EXTENSIONS = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'mp4']
+
 
 class Project(models.Model):
     title = models.CharField(max_length=200)
     category = models.CharField(max_length=200)
     filter_class = models.CharField(max_length=50)
-    image = models.CharField(max_length=255)  # Path to thumbnail
-    og_image = models.CharField(max_length=255, blank=True, null=True, help_text="Custom Open Graph image (1200x630). Falls back to thumbnail.")
+    image = models.ImageField(upload_to='portfolio/', max_length=255, help_text="Thumbnail shown in the projects grid.")
+    og_image = models.ImageField(upload_to='portfolio/', max_length=255, blank=True, null=True, help_text="Custom Open Graph image (1200x630). Falls back to thumbnail.")
     
     MEDIA_TYPE_CHOICES = [
         ('image', 'Image'),
@@ -13,8 +17,14 @@ class Project(models.Model):
         ('placeholder', 'Placeholder (no media yet)'),
     ]
     media_type = models.CharField(max_length=11, choices=MEDIA_TYPE_CHOICES, default='image')
-    media_src = models.CharField(max_length=255)
-    media_poster = models.CharField(max_length=255, blank=True, null=True)
+    media_src = models.FileField(
+        upload_to='portfolio/',
+        max_length=255,
+        blank=True,
+        validators=[FileExtensionValidator(PROJECT_MEDIA_EXTENSIONS)],
+        help_text="Main media on the project page: an image, or an mp4 video when media type is Video.",
+    )
+    media_poster = models.ImageField(upload_to='portfolio/', max_length=255, blank=True, null=True, help_text="Cover frame shown before the video plays.")
     
     date = models.CharField(max_length=50)
     url = models.URLField(blank=True, null=True)

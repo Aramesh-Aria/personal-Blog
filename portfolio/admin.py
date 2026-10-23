@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib import messages
+from django.utils.html import format_html
 from .models import Project, ProjectOverview, ProjectFeature, ContactMessage, Resume
 
 class ProjectOverviewInline(admin.TabularInline):
@@ -12,8 +13,31 @@ class ProjectFeatureInline(admin.TabularInline):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'date')
+    list_display = ('title', 'category', 'date', 'thumbnail_preview')
     inlines = [ProjectOverviewInline, ProjectFeatureInline]
+    readonly_fields = ('thumbnail_preview', 'media_preview')
+    fieldsets = (
+        (None, {'fields': ('title', 'category', 'filter_class', 'date', 'url')}),
+        ('Media', {'fields': (
+            'image', 'thumbnail_preview',
+            'media_type', 'media_src', 'media_poster', 'media_preview',
+            'og_image',
+        )}),
+    )
+
+    def thumbnail_preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" style="max-height: 120px;">', obj.image.url)
+        return "-"
+    thumbnail_preview.short_description = 'Thumbnail'
+
+    def media_preview(self, obj):
+        if not obj.media_src:
+            return "-"
+        if obj.media_type == 'video':
+            return format_html('<video src="{}" style="max-height: 200px;" controls preload="metadata"></video>', obj.media_src.url)
+        return format_html('<img src="{}" style="max-height: 200px;">', obj.media_src.url)
+    media_preview.short_description = 'Media Preview'
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):

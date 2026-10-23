@@ -13,7 +13,7 @@
   "name": "{{ project.title }}",
   "description": "{% for section in structured_overview %}{% if section.text %}{{ section.text|truncatechars:200 }}{% endif %}{% endfor %}",
   "url": "{{ SITE_URL }}{{ request.path }}",
-  "image": "{% if project.og_image %}{{ SITE_URL }}{{ MEDIA_URL }}{{ project.og_image }}{% else %}{{ SITE_URL }}{{ MEDIA_URL }}{{ project.image }}{% endif %}",
+  "image": "{% if project.og_image %}{{ SITE_URL }}{{ project.og_image.url }}{% else %}{{ SITE_URL }}{{ project.image.url }}{% endif %}",
   "applicationCategory": "{{ project.category }}",
   "operatingSystem": "Web",
   "offers": {
@@ -83,14 +83,14 @@
                       controls
                       playsinline
                       preload="metadata"
-                      poster="{% if project.media_poster %}{{ MEDIA_URL }}{{ project.media_poster }}{% endif %}"
+                      poster="{% if project.media_poster %}{{ project.media_poster.url }}{% endif %}"
                     >
-                      <source src="{{ MEDIA_URL }}{{ project.media_src }}" type="video/mp4">
+                      <source src="{{ project.media_src.url }}" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
                   {% elif project.media_type == "gif" %}
                     <img
-                      src="{{ MEDIA_URL }}{{ project.media_src }}"
+                      src="{{ project.media_src.url }}"
                       alt="{{ project.title }} demo"
                       class="img-fluid"
                       loading="lazy"
@@ -98,7 +98,7 @@
                     >
                   {% else %}
                     <img
-                      src="{{ MEDIA_URL }}{{ project.image }}"
+                      src="{{ project.image.url }}"
                       alt="{{ project.title }}"
                       class="img-fluid"
                       loading="lazy"

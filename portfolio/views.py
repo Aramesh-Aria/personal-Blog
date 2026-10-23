@@ -51,9 +51,9 @@ class ProjectDetailView(DetailView):
         description_parts = [s['text'] for s in structured_overview if s['text']]
         context['og_description'] = ' '.join(description_parts)[:160]
         if project.og_image:
-            context['og_image'] = f"{settings.SITE_URL}{settings.MEDIA_URL}{project.og_image}"
+            context['og_image'] = f"{settings.SITE_URL}{project.og_image.url}"
         else:
-            context['og_image'] = f"{settings.SITE_URL}{settings.MEDIA_URL}{project.image}"
+            context['og_image'] = f"{settings.SITE_URL}{project.image.url}"
         context['og_url'] = f"{settings.SITE_URL}{self.request.path}"
         context['og_type'] = 'article'
         return context

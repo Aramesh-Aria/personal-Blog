@@ -248,7 +248,7 @@
                     <span>در حال توسعه</span>
                   </div>
                   {% else %}
-                  <img src="{{ MEDIA_URL }}{{ project.image }}" class="img-fluid" alt="{{ project.title }}" loading="lazy">
+                  <img src="{{ project.image.url }}" class="img-fluid" alt="{{ project.title }}" loading="lazy">
                   {% endif %}
                   <div class="portfolio-info">
                     <div class="content">
@@ -256,7 +256,7 @@
                       <h4>{{ project.title }}</h4>
                       <div class="portfolio-links">
                         {% if project.media_type != "placeholder" %}
-                        <a href="{{ MEDIA_URL }}{{ project.image }}" class="glightbox" title="{{ project.title }}">
+                        <a href="{{ project.image.url }}" class="glightbox" title="{{ project.title }}">
                           <i class="bi bi-plus-lg"></i>
                         </a>
                         {% endif %}
