@@ -163,3 +163,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "public","media")
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Send errors (including 500 tracebacks) to stdout so they show up in the Runflare logs
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {'class': 'logging.StreamHandler'},
+    },
+    'loggers': {
+        'django': {'handlers': ['console'], 'level': 'INFO'},
+    },
+}
