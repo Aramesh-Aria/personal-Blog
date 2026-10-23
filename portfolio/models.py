@@ -85,8 +85,12 @@ class Resume(models.Model):
         super().save(*args, **kwargs)
 
     @property
+    def file_exists(self):
+        return bool(self.file) and self.file.storage.exists(self.file.name)
+
+    @property
     def file_size(self):
-        if self.file:
+        if self.file_exists:
             return self.file.size
         return 0
 

@@ -100,13 +100,13 @@ class ResumeViewTest(TestCase):
         response = self.client.get(reverse('index'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "دانلود رزومه")
-        self.assertContains(response, "my_resume_6")
+        self.assertContains(response, "resumes/ahmad_aramesh_resume.pdf")
 
     def test_index_view_no_resume(self):
         response = self.client.get(reverse('index'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "دانلود رزومه")
-        self.assertContains(response, "my_resume_6")
+        self.assertContains(response, "resumes/ahmad_aramesh_resume.pdf")
 
 
 class ResumeAdminTest(TestCase):
@@ -234,3 +234,22 @@ class ProjectMediaUploadTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.project.refresh_from_db()
         self.assertEqual(self.project.media_src.name, 'portfolio/old.mp4')
+
+
+class ResumeMissingFileTest(TestCase):
+    def setUp(self):
+        from django.contrib.auth.models import User
+        self.client.force_login(User.objects.create_superuser('admin', 'admin@example.com', 'pass'))
+        self.resume = Resume.objects.create(title="Gone", file="resumes/missing.pdf", is_active=True)
+
+    def test_admin_pages_load_when_file_missing(self):
+        response = self.client.get(reverse('admin:portfolio_resume_changelist'))
+        self.assertContains(response, "File missing")
+        response = self.client.get(reverse('admin:portfolio_resume_change', args=[self.resume.pk]))
+        self.assertEqual(response.status_code, 200)
+
+    def test_index_falls_back_when_active_resume_file_missing(self):
+        response = self.client.get(reverse('index'))
+        self.assertEqual(response.status_code, 200)
+        self.assertIsNone(response.context['active_resume'])
+        self.assertNotContains(response, 'resumes/missing.pdf')

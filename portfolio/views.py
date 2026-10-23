@@ -15,7 +15,8 @@ class IndexView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['projects'] = Project.objects.all()
         context['form'] = ContactForm()
-        context['active_resume'] = Resume.objects.filter(is_active=True).first()
+        active_resume = Resume.objects.filter(is_active=True).first()
+        context['active_resume'] = active_resume if active_resume and active_resume.file_exists else None
         context['og_title'] = 'Aria Aramesh — Backend Developer'
         context['og_description'] = 'Backend developer focused on Python, Django, and PostgreSQL. Building real-world applications from idea to production.'
         context['og_image'] = f"{settings.SITE_URL}{settings.STATIC_URL}{staticfiles_storage.hashed_name('img/og-image.webp')}"

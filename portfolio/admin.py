@@ -54,6 +54,8 @@ class ResumeAdmin(admin.ModelAdmin):
     fields = ('title', 'file', 'is_active', 'date', 'file_size_display', 'file_extension')
 
     def file_size_display(self, obj):
+        if obj.file and not obj.file_exists:
+            return "File missing - please re-upload"
         if obj.file:
             size = obj.file.size
             if size < 1024:
@@ -72,6 +74,9 @@ class ResumeAdmin(admin.ModelAdmin):
     file_extension.short_description = 'Type'
 
     def save_model(self, request, obj, form, change):
+        if obj.file and not obj.file_exists and 'file' not in form.changed_data:
+            messages.error(request, "The resume file is missing from storage. Please upload it again.")
+            return
         if obj.file and obj.file.size > 5 * 1024 * 1024:
             messages.error(request, "File size must be less than 5MB.")
             return
