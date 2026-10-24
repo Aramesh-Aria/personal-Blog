@@ -14,3 +14,5 @@ static/img/.DS_Store
 static_dev/
 db.sqlite3
 /database
+# uploaded media lives on the Runflare disk; defaults are in portfolio/seed_media
+/public/media/

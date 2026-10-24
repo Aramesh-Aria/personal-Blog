@@ -1,10 +1,10 @@
 import os
 import tempfile
-from io import BytesIO
+from io import BytesIO, StringIO
 from django.test import TestCase, override_settings
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.urls import reverse
-from .models import Resume, Project, ProjectOverview, ProjectFeature
+from .models import Resume, Project, ProjectOverview, ProjectFeature, SiteProfile
 
 
 class ResumeModelTest(TestCase):
@@ -253,3 +253,49 @@ class ResumeMissingFileTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIsNone(response.context['active_resume'])
         self.assertNotContains(response, 'resumes/missing.pdf')
+
+
+@override_settings(MEDIA_ROOT=tempfile.mkdtemp())
+class SiteProfileTest(TestCase):
+    def setUp(self):
+        from django.contrib.auth.models import User
+        self.client.force_login(User.objects.create_superuser('admin', 'admin@example.com', 'pass'))
+
+    def test_index_uses_default_profile_images_without_site_profile(self):
+        response = self.client.get(reverse('index'))
+        self.assertContains(response, 'src="/public/media/profile/profile_5.webp"')
+        self.assertContains(response, 'src="/public/media/profile/profile-4.webp"')
+
+    def test_admin_upload_replaces_profile_images(self):
+        response = self.client.post(reverse('admin:portfolio_siteprofile_add'), {
+            'hero_image': make_webp("new-hero.webp"),
+            'about_image': make_webp("new-about.webp"),
+        })
+        self.assertEqual(response.status_code, 302)
+
+        profile = SiteProfile.load()
+        response = self.client.get(reverse('index'))
+        self.assertContains(response, f'src="{profile.hero_image.url}"')
+        self.assertContains(response, f'src="{profile.about_image.url}"')
+        self.assertTrue(profile.hero_image.name.startswith('profile/new-hero'))
+
+    def test_only_one_site_profile(self):
+        SiteProfile().save()
+        SiteProfile().save()
+        self.assertEqual(SiteProfile.objects.count(), 1)
+        response = self.client.get(reverse('admin:portfolio_siteprofile_add'))
+        self.assertEqual(response.status_code, 403)
+
+
+class SeedMediaCommandTest(TestCase):
+    def test_copies_missing_files_and_skips_existing(self):
+        from django.core.management import call_command
+        with tempfile.TemporaryDirectory() as media_root, override_settings(MEDIA_ROOT=media_root):
+            out = StringIO()
+            call_command('seed_media', stdout=out)
+            self.assertTrue(os.path.exists(os.path.join(media_root, 'profile', 'profile_5.webp')))
+            self.assertTrue(os.path.exists(os.path.join(media_root, 'portfolio', 'project-1-demo.mp4')))
+
+            out = StringIO()
+            call_command('seed_media', stdout=out)
+            self.assertIn('0 copied', out.getvalue())

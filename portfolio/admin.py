@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib import messages
 from django.utils.html import format_html
-from .models import Project, ProjectOverview, ProjectFeature, ContactMessage, Resume
+from .models import Project, ProjectOverview, ProjectFeature, ContactMessage, Resume, SiteProfile
 
 class ProjectOverviewInline(admin.TabularInline):
     model = ProjectOverview
@@ -84,3 +84,23 @@ class ResumeAdmin(admin.ModelAdmin):
             messages.error(request, "Only PDF files are allowed.")
             return
         super().save_model(request, obj, form, change)
+
+
+@admin.register(SiteProfile)
+class SiteProfileAdmin(admin.ModelAdmin):
+    fields = ('hero_image', 'hero_image_preview', 'about_image', 'about_image_preview')
+    readonly_fields = ('hero_image_preview', 'about_image_preview')
+
+    def has_add_permission(self, request):
+        return not SiteProfile.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def hero_image_preview(self, obj):
+        return format_html('<img src="{}" style="max-height: 200px;">', obj.hero_image_url)
+    hero_image_preview.short_description = 'Current hero image'
+
+    def about_image_preview(self, obj):
+        return format_html('<img src="{}" style="max-height: 200px;">', obj.about_image_url)
+    about_image_preview.short_description = 'Current about image'

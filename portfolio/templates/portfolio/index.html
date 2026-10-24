@@ -15,7 +15,7 @@
   "@type": "Person",
   "name": "Aria Aramesh",
   "url": "{{ SITE_URL }}/",
-  "image": "{{ SITE_URL }}{% static 'img/profile-4.webp' %}",
+  "image": "{{ SITE_URL }}{{ site_profile.about_image_url }}",
   "jobTitle": "Backend Developer",
   "description": "Backend developer focused on Python, Django, and PostgreSQL. Building real-world applications from idea to production.",
   "sameAs": [
@@ -45,7 +45,7 @@
             <div class="profile-card">
               <div class="profile-header">
                 <div class="profile-image">
-                 <img src="{{ MEDIA_URL }}profile/profile-4.webp" alt="Profile Image" class="img-fluid" loading="lazy" decoding="async">                </div>
+                 <img src="{{ site_profile.about_image_url }}" alt="Profile Image" class="img-fluid" loading="lazy" decoding="async">                </div>
                 <div class="profile-badge">
                   <i class="bi bi-check-circle-fill"></i>
                 </div>

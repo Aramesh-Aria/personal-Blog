@@ -91,6 +91,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'portfolio.context_processors.current_year',
                 'portfolio.context_processors.site_meta',
+                'portfolio.context_processors.site_profile',
             ],
         },
     },

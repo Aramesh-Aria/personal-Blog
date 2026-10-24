@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
+from .models import SiteProfile
 
 
 def current_year(request):
@@ -23,4 +24,10 @@ def site_meta(request):
         'default_og_image_full': f"{site_url}{static_url}{staticfiles_storage.hashed_name('img/og-image.webp')}",
         'default_og_url': f"{site_url}/",
         'default_og_type': 'website',
+    }
+
+
+def site_profile(request):
+    return {
+        'site_profile': SiteProfile.load()
     }

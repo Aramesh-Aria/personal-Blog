@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.validators import FileExtensionValidator
 from django.db import models
 
@@ -99,3 +100,34 @@ class Resume(models.Model):
         if self.file:
             return self.file.name.split('.')[-1].lower()
         return ''
+
+
+class SiteProfile(models.Model):
+    DEFAULT_HERO_IMAGE = 'profile/profile_5.webp'
+    DEFAULT_ABOUT_IMAGE = 'profile/profile-4.webp'
+
+    hero_image = models.ImageField(upload_to='profile/', max_length=255, blank=True, help_text="Large photo in the hero section at the top of the homepage.")
+    about_image = models.ImageField(upload_to='profile/', max_length=255, blank=True, help_text="Photo on the profile card in the About section.")
+
+    class Meta:
+        verbose_name = 'Site Profile'
+        verbose_name_plural = 'Site Profile'
+
+    def __str__(self):
+        return 'Site Profile'
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def load(cls):
+        return cls.objects.filter(pk=1).first() or cls()
+
+    @property
+    def hero_image_url(self):
+        return self.hero_image.url if self.hero_image else f"{settings.MEDIA_URL}{self.DEFAULT_HERO_IMAGE}"
+
+    @property
+    def about_image_url(self):
+        return self.about_image.url if self.about_image else f"{settings.MEDIA_URL}{self.DEFAULT_ABOUT_IMAGE}"

@@ -1,3 +1,4 @@
+from django.core.management import call_command
 from django.core.management.base import BaseCommand
 from portfolio.models import Project, ProjectOverview, ProjectFeature
 
@@ -234,3 +235,5 @@ class Command(BaseCommand):
                 )
             
             self.stdout.write(self.style.SUCCESS(f'Successfully seeded project "{project.title}"'))
+
+        call_command('seed_media', stdout=self.stdout)
