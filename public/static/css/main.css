@@ -1467,13 +1467,9 @@ section,
   transform: translateY(-4px);
 }
 
-.resume .resume-side .technical-skill i {
-  font-size: 2.65rem;
-  line-height: 1;
-}
-
-.resume .resume-side .technical-skill .devicon-flask-original {
-  color: var(--heading-color);
+.resume .resume-side .technical-skill img {
+  width: 2.65rem;
+  height: 2.65rem;
 }
 
 .resume .resume-side .technical-skill span {
