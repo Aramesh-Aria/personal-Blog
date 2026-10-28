@@ -299,3 +299,20 @@ class SeedMediaCommandTest(TestCase):
             out = StringIO()
             call_command('seed_media', stdout=out)
             self.assertIn('0 copied', out.getvalue())
+
+
+class ErrorPageTest(TestCase):
+    def test_missing_page_uses_custom_404(self):
+        response = self.client.get('/this-page-does-not-exist/')
+        self.assertEqual(response.status_code, 404)
+        self.assertTemplateUsed(response, '404.html')
+        self.assertContains(response, 'Page Not Found', status_code=404)
+        self.assertContains(response, f'href="{reverse("index")}"', status_code=404)
+        self.assertContains(response, 'name="robots" content="noindex"', status_code=404)
+
+    def test_server_error_renders_custom_500(self):
+        from django.test import RequestFactory
+        from django.views.defaults import server_error
+        response = server_error(RequestFactory().get('/'))
+        self.assertEqual(response.status_code, 500)
+        self.assertIn(b'Something went wrong', response.content)

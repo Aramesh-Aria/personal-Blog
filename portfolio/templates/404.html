@@ -1,0 +1,103 @@
+{% extends "portfolio/base.html" %}
+
+{% block title %}Page Not Found - Aria Aramesh{% endblock %}
+
+{% block extra_head %}
+  <meta name="robots" content="noindex">
+  <style>
+    .not-found {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
+    .not-found .error-code {
+      font-family: var(--heading-font);
+      font-size: clamp(96px, 20vw, 180px);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 20px;
+      color: color-mix(in srgb, var(--heading-color), transparent 15%);
+    }
+
+    .not-found h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .not-found p {
+      color: color-mix(in srgb, var(--default-color), transparent 30%);
+      margin-bottom: 32px;
+    }
+
+    .not-found .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .not-found .btn {
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 50px;
+      border: 2px solid var(--accent-color);
+      transition: all 0.3s ease;
+    }
+
+    .not-found .btn-primary {
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+    }
+
+    .not-found .btn-primary:hover {
+      background-color: color-mix(in srgb, var(--accent-color), black 10%);
+      border-color: color-mix(in srgb, var(--accent-color), black 10%);
+      color: var(--contrast-color);
+      transform: translateY(-2px);
+    }
+
+    .not-found .btn-outline {
+      background-color: transparent;
+      color: var(--accent-color);
+    }
+
+    .not-found .btn-outline:hover {
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      transform: translateY(-2px);
+    }
+  </style>
+{% endblock %}
+
+{% block body_class %}not-found-page{% endblock %}
+
+{% block content %}
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Page Not Found</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li class="current">404</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Not Found Section -->
+    <section id="not-found" class="not-found section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="error-code">404</div>
+        <h2>This page doesn't exist</h2>
+        <p>The page you're looking for doesn't exist or has been moved.</p>
+        <div class="actions">
+          <a href="{% url 'index' %}" class="btn btn-primary"><i class="bi bi-house me-2"></i>Back to Home</a>
+          <a href="{% url 'index' %}#projects" class="btn btn-outline"><i class="bi bi-images me-2"></i>View Projects</a>
+        </div>
+      </div>
+    </section><!-- End Not Found Section -->
+{% endblock %}
