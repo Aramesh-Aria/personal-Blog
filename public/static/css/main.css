@@ -2279,6 +2279,39 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 50%);
 }
 
+.contact .contact-form .captcha-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.contact .contact-form .captcha-row img.captcha {
+  border-radius: 0.5rem;
+}
+
+.contact .contact-form .captcha-refresh-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: 50%;
+  background-color: color-mix(in srgb, var(--surface-color) 90%, white 5%);
+  color: var(--default-color);
+  font-size: 1.25rem;
+  transition: 0.3s;
+}
+
+.contact .contact-form .captcha-refresh-btn:hover {
+  border-color: var(--accent-color);
+}
+
+.contact .contact-form .captcha-refresh-btn:disabled {
+  opacity: 0.5;
+}
+
 .contact .contact-form .btn {
   background-color: var(--accent-color);
   color: var(--contrast-color);

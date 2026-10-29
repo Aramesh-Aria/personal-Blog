@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # WhiteNoise serves static in runserver too, with max-age=0 under DEBUG, so edits show on a normal reload
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'captcha',
     'portfolio',

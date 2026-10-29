@@ -194,6 +194,57 @@
   window.addEventListener("load", initSwiper);
 
   /**
+   * Refresh captcha image
+   */
+  document.querySelectorAll('.captcha-controls').forEach((captchaControls) => {
+    const refreshButton = captchaControls.querySelector('.captcha-refresh-btn');
+    const refreshUrl = captchaControls.dataset.refreshUrl;
+
+    if (!refreshButton || !refreshUrl) {
+      return;
+    }
+
+    refreshButton.addEventListener('click', async () => {
+      const image = captchaControls.querySelector('img.captcha');
+      const keyInput = captchaControls.querySelector('input[type="hidden"]');
+      const textInput = captchaControls.querySelector('input[type="text"]');
+
+      refreshButton.disabled = true;
+
+      try {
+        const response = await fetch(refreshUrl, {
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Captcha refresh failed');
+        }
+
+        const data = await response.json();
+
+        if (image && data.image_url) {
+          image.src = data.image_url;
+        }
+
+        if (keyInput && data.key) {
+          keyInput.value = data.key;
+        }
+
+        if (textInput) {
+          textInput.value = '';
+          textInput.focus();
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        refreshButton.disabled = false;
+      }
+    });
+  });
+
+  /**
    * Correct scrolling position upon page load for URLs containing hash links.
    */
   window.addEventListener('load', function(e) {

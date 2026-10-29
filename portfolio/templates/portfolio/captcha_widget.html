@@ -1,0 +1,10 @@
+{# django-simple-captcha's widget with a "new image" button; main.js fetches a fresh image and key from data-refresh-url. #}
+{% spaceless %}
+<div class="captcha-controls" data-refresh-url="{% url 'captcha-refresh' %}">
+  <div class="captcha-row">
+    <img src="{{ image }}" alt="captcha" class="captcha">
+    <button type="button" class="captcha-refresh-btn" aria-label="New captcha image" title="New captcha image"><i class="bi bi-arrow-clockwise" aria-hidden="true"></i></button>
+  </div>
+  {% for widget in widget.subwidgets %}{% include widget.template_name %}{% endfor %}
+</div>
+{% endspaceless %}
