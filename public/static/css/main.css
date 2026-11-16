@@ -1659,6 +1659,9 @@ section,
 }
 
 .portfolio .portfolio-wrap {
+  display: block;
+  color: inherit;
+  cursor: pointer;
   transition: 0.4s;
   position: relative;
   overflow: hidden;
@@ -1706,30 +1709,7 @@ section,
   font-size: 20px;
   color: var(--contrast-color);
   font-weight: 700;
-  margin-bottom: 15px;
-}
-
-.portfolio .portfolio-wrap .portfolio-info .portfolio-links {
-  display: flex;
-  gap: 12px;
-}
-
-.portfolio .portfolio-wrap .portfolio-info .portfolio-links a {
-  color: var(--contrast-color);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: color-mix(in srgb, var(--accent-color), transparent 30%);
-  border-radius: 50%;
-  font-size: 18px;
-  transition: 0.3s;
-}
-
-.portfolio .portfolio-wrap .portfolio-info .portfolio-links a:hover {
-  background-color: var(--accent-color);
-  transform: translateY(-3px);
+  margin-bottom: 0;
 }
 
 .portfolio .portfolio-wrap:hover {
